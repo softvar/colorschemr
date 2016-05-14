@@ -8,6 +8,7 @@ import { ColorService } from '../../services/ColorService';
 import { StripService } from '../../services/StripService';
 
 import { Defaults } from '../../constants/Defaults';
+import {QuoteService} from "../../services/QuoteService";
 
 @Component({
   selector: 'app',
@@ -16,7 +17,7 @@ import { Defaults } from '../../constants/Defaults';
     'app/components/shared/css/style.css',
     'app/components/color-schemr/color-schemr.css'
   ],
-  providers: [ ColorService, StripService ],
+  providers: [ ColorService, StripService, QuoteService ],
   directives: [ Header, Footer ],
   pipes: []
 })
@@ -26,9 +27,12 @@ export class ColorSchemr {
   colorStrips: Array<Object> = [];
   hash: string;
 
+  quote:string;
+
   constructor(
     public colorService: ColorService,
-    public stripService: StripService
+    public stripService: StripService,
+    public quoteService: QuoteService
     // @Inject(RouteParams) params: RouteParams
   ) {
     // this.hash = params.get('hash');
@@ -39,12 +43,14 @@ export class ColorSchemr {
   }
   init() {
     let stripsLength = Defaults.STRIP_INIT_COUNT;
+    this.getQuote();
     this.colorStrips = this.stripService.init(stripsLength);
     // console.log(this.colorStrips);
   };
 
   updateStripSettings () {
     this.stripService.updateColor();
+    this.getQuote();
   };
 
   eventHandler (ev) {
@@ -73,6 +79,12 @@ export class ColorSchemr {
     // ev.preventDefault();
     // ev.stopPropagation();
     this.stripService.updateOpacity(strip, index);
+  }
+
+  getQuote() {
+    this.quoteService.getQuote().subscribe(function (quote) {
+      this.quote = quote;
+    });
   }
 
 }
