@@ -18,6 +18,13 @@
 			<i id="remove-strip" class="material-icons" style="font-size: 20px">close</i>
 		</div>
 
+		<div class="absolute" style="bottom: 320px; width: 100%;"
+			[hidden]="!colorStrip.isHovered">
+			<input class="mdl-slider mdl-js-slider" type="range"
+				min="1" max="10" value="10" steps="1" tabindex="0"
+				[(ngModel)]="colorStrip.opacity"
+				(ngModelChange)="onOpacityChange(i, colorStrip)">
+		</div>
 
 		<div style="bottom: 275px; width: 100%; font-size: 16px; text-transform: uppercase;"
 			class="absolute">
