@@ -1,0 +1,11 @@
+<!-- <app-header></app-header> -->
+<div style="height: 650px;" (window:keypress)="eventHandler($event)">
+	<div class="strip"
+		*ngFor="let colorStrip of colorStrips; let i = index"
+		[ngStyle]="{ 'background': colorStrip.rgbColor, width: ((100 / colorStrips.length) - (10 / colorStrips.length )) + '%' }"
+		(click)="onStripClick($event, i, colorStrip)"
+		(mouseover)="colorStrip.isHovered = true;"
+		(mouseout)="colorStrip.isHovered = false;">
+	</div>
+</div>
+<!-- <app-footer></app-footer> -->
