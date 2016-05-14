@@ -1,0 +1,12 @@
+.mdl-layout__drawer-button {
+	color: #777 !important;
+	font-size: 22px;
+}
+
+.mdl-layout__drawer-button:focus {
+	outline: 0 !important;
+}
+
+.mdl-navigation .mdl-navigation__link {
+	color: #757575 !important;
+}
