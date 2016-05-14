@@ -1,4 +1,4 @@
-<!-- <app-header></app-header> -->
+<app-header></app-header>
 <div style="height: 650px;" (window:keypress)="eventHandler($event)">
 	<div class="strip"
 		*ngFor="let colorStrip of colorStrips; let i = index"
@@ -6,6 +6,22 @@
 		(click)="onStripClick($event, i, colorStrip)"
 		(mouseover)="colorStrip.isHovered = true;"
 		(mouseout)="colorStrip.isHovered = false;">
+
+		<div class="absolute" style="top: 5px;"
+			[ngClass]="{'close--left': i === 0, 'close--right': i !== 0}"
+			[hidden]="!colorStrip.isHovered || colorStrips.length === 1"
+			(click)="removeStrip($event, i, colorStrip)">
+			<i id="remove-strip" class="material-icons" style="font-size: 20px">close</i>
+		</div>
+
+		<div style="bottom: 275px; width: 100%; font-size: 16px; text-transform: uppercase;"
+			class="absolute">
+			{{ colorStrip.color }}
+		</div>
+		<div style="bottom: 225px; width: 100%; font-size: 16px;"
+			class="absolute">
+			{{ colorStrip.rgbColor }}
+		</div>
 	</div>
 </div>
-<!-- <app-footer></app-footer> -->
+<app-footer></app-footer>
