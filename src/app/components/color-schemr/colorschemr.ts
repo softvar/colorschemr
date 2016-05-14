@@ -1,6 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { NgStyle } from '@angular/common';
 
+import { Header } from '../shared/header';
+import { Footer } from '../shared/footer';
+
 import { ColorService } from '../../services/ColorService';
 import { StripService } from '../../services/StripService';
 
@@ -50,5 +53,19 @@ export class ColorSchemr {
       this.updateStripSettings();
     }
   };
+  onStripClick (ev, index, strip) {
+    strip.isLocked = !strip.isLocked;
+  };
+  addStrip (ev, isInFront) {
+    if (this.colorStrips && this.colorStrips.length >= 10) {
+        // TODO: show snackbar, notifying user
+        return;
+    }
+    this.colorStrips = this.stripService.addStrip(isInFront);
+  };
 
+  removeStrip (ev, index, strip) {
+    ev.preventDefault();
+    this.colorStrips.splice(index, 1);
+  };
 }
