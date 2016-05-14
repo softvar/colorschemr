@@ -13,7 +13,8 @@
     "lint": "npm run tslint 'src/**/*.ts'"
   },
   "contributors": [
-    "Varun Malhotra <varun2902@gmail.com>"
+    "Varun Malhotra <varun2902@gmail.com>",
+    "Gaurav Nanda <93.gaurav@gmail.com>"
   ],
   "license": "MIT",
   "devDependencies": {
