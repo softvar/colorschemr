@@ -9,6 +9,7 @@ export class StripModel {
 
   color: String = '';
   rgbColor: String = '';
+  rgb: Array<number> = [];
   isLocked: Boolean = false;
   opacity: any = 10;
   fontColor: string = '';
@@ -25,6 +26,7 @@ export class StripModel {
     this.color = this.colorService.getRandomHexCode();
     let rgb = this.colorService.hexToRgb(this.color);
     this.rgbColor = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, 1)`;
+    this.rgb = rgb;
     this.setFontColor(rgb);
   };
 
@@ -34,6 +36,7 @@ export class StripModel {
 
     let rgb = this.colorService.getFormattedRGB(this);
     this.rgbColor = rgb.formatted;
+    this.rgb = rgb.raw;
     hexColor = this.colorService.rgbToHex(
       rgb.raw[0],
       rgb.raw[1],
@@ -44,8 +47,9 @@ export class StripModel {
     this.setFontColor(rgb.raw);
   };
 
-  updateOpacity () {
-
+  updateOpacity (strip) {
+    let rgb = strip.rgb;
+    strip.rgbColor = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${strip.opacity / 10 || 1})`;
   };
 
   init () {};
@@ -56,7 +60,7 @@ export class StripModel {
     if (fontWeight < 0.5) {
       this.fontColor = '#20172C';
     } else {
-      this.fontColor = '#DEDEDE';
+      this.fontColor = '#FFFFFF';
     }
   };
 }
