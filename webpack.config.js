@@ -42,7 +42,14 @@ var defaultConfig = {
   },
 
   module: {
-    preLoaders: [{
+    preLoaders: [
+      { test: /\.ts$/,
+        loader: 'tslint-loader',
+        exclude: [
+          path.join(__dirname, 'node_modules')
+        ]
+      },
+      {
         test: /\.js$/,
         loader: 'source-map-loader',
         exclude: [
@@ -61,6 +68,18 @@ var defaultConfig = {
   resolve: {
     root: [ path.join(__dirname, 'src') ],
     extensions: ['', '.ts', '.js']
+  },
+
+  /**
+   * Static analysis linter for TypeScript advanced options configuration
+   * Description: An extensible linter for the TypeScript language.
+   *
+   * See: https://github.com/wbuchwalter/tslint-loader
+   */
+  tslint: {
+    emitErrors: false,
+    failOnHint: false,
+    resourcePath: 'src'
   },
 
   devServer: {
