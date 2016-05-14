@@ -25,5 +25,20 @@ export class StripModel {
     this.rgbColor = 'rgba(' + rgbObject.r + ', ' + rgbObject.g + ', ' + rgbObject.b + ', 1)';
   };
 
+  updateColor () {
+    if (this.isLocked) { return; }
+    let hexColor = this.colorService.getRandomHexCode();
+    let rgbObject;
+
+    rgbObject = this.colorService.hexToRgb(this.color);
+    this.rgbColor = 'rgba(' + rgbObject.r + ', ' + rgbObject.g + ', ' + rgbObject.b + ', ' + ((this.opacity / 10) || 1) + ')';
+
+    if (parseInt(this.opacity, 10) !== 10) {
+      hexColor = this.colorService.rgbToHex(rgbObject.r, rgbObject.g, rgbObject.b);
+    }
+
+    this.color = hexColor;
+  };
+
   init () {};
 }
