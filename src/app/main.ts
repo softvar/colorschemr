@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, enableProdMode } from '@angular/core';
 import { Router, RouteConfig, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
 
 import { Home } from './components/home/home';
@@ -20,4 +20,7 @@ import { ColorSchemr } from './components/color-schemr/colorschemr';
 ])
 
 export class MainApp {
+
 }
+
+enableProdMode();
