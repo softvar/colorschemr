@@ -29,6 +29,12 @@ export class StripService {
     }
   };
 
+  updateColorByIndex (index) {
+    if (this.strips[index]) {
+      this.strips[index].updateColor();
+    }
+  }
+
   updateOpacity (strip: StripModel, index: number) {
     // console.log(strip.opacity)
     this.strips[index].updateColor();

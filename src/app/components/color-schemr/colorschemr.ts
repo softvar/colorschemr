@@ -57,6 +57,12 @@ export class ColorSchemr {
     // console.log(ev, ev.keyCode, ev.keyIdentifier);
     if (ev.keyCode === 32) {
       this.updateStripSettings();
+    } else if ((ev.keyCode >= 49 && ev.keyCode <= 57)) {
+      this.stripService.updateColorByIndex(ev.keyCode - 49);
+    } else if ((ev.keyCode >= 97 && ev.keyCode <= 105)) {
+      this.stripService.updateColorByIndex(ev.keyCode - 97);
+    } else if ((ev.keyCode === 48) || (ev.keyCode === 96)) {
+      this.stripService.updateColorByIndex(9);
     }
   };
   onStripClick (ev, index, strip) {
