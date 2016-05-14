@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { ColorService } from './ColorService';
+import { StripService } from './StripService';
 
 @Injectable()
 export class StripModel {
   public colorService: ColorService;
+  public stripService: StripService;
 
   color: String = '';
   rgbColor: String = '';
@@ -16,6 +18,7 @@ export class StripModel {
     // not injecting it in constructor since it would have to be passed
     // while doing `new StripModel()`
     this.colorService = new ColorService();
+    this.stripService = new StripService();
 
     this.color = this.colorService.getRandomHexCode();
     let rgbObject = this.colorService.hexToRgb(this.color);
