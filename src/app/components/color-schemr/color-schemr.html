@@ -27,11 +27,11 @@
 		</div>
 
 		<div style="bottom: 275px; width: 100%; font-size: 16px; text-transform: uppercase;"
-			class="absolute">
+			class="absolute" [ngStyle]="{ 'color' : colorStrip.fontColor }">
 			{{ colorStrip.color }}
 		</div>
 		<div style="bottom: 225px; width: 100%; font-size: 16px;"
-			class="absolute">
+			class="absolute" [ngStyle]="{ 'color' : colorStrip.fontColor }">
 			{{ colorStrip.rgbColor }}
 		</div>
 
