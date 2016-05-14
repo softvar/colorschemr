@@ -7,7 +7,7 @@ var webpackConfig = {
   entry: {
     'polyfills': './src/polyfills.ts',
     'vendor':    './src/vendor.ts',
-    'app-config':       './src/app-config.ts',
+    'app-config':'./src/app-config.ts',
   },
 
   output: {
@@ -61,7 +61,7 @@ var defaultConfig = {
     ],
     noParse: [
       path.join(__dirname, 'node_modules', 'zone.js', 'dist'),
-      path.join(__dirname, 'node_modules', 'angular2', 'bundles')
+      path.join(__dirname, 'node_modules', '@angular', 'bundles')
     ]
   },
 
