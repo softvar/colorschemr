@@ -1,0 +1,34 @@
+.strip {
+	background: #EAEAEA;
+	cursor: pointer;
+	float: left;
+	height: 100%;
+	position: relative;
+	text-align: center;
+	transition: background .1s ease-in-out,box-shadow .1s ease-in-out;
+}
+
+.plus-icon {
+	margin-top: 300px;
+	font-size: 30px;
+	background: #fff;
+	border-radius: 30px;
+	color: #777;
+	border: 1px solid #444;
+}
+
+.side-menus {
+	height: 100%;
+	width: 5%;
+	float: left;
+	background: #fff;
+	text-align: center;
+}
+
+.close--left {
+	left: 2px;
+}
+
+.close--right {
+	right: 2px;
+}
