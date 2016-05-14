@@ -10,6 +10,26 @@ export class StripService {
 
   constructor() {};
 
+  addStrip (isInFront) {
+    let strip;
+    strip = new StripModel(this.stripsLength);
+    this.stripsLength = this.strips.length;
+
+    if (isInFront) {
+        this.strips = [strip, ...this.strips];
+    } else {
+        this.strips = [...this.strips, strip];
+    }
+    return this.strips;
+  };
+
+  updateColor () {
+    for (let i = 0; i < this.strips.length; i++) {
+        this.strips[i].updateColor();
+    }
+  };
+
+
   flush () {
     this.strips = [];
   };
