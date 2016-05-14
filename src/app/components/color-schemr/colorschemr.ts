@@ -8,7 +8,7 @@ import { ColorService } from '../../services/ColorService';
 import { StripService } from '../../services/StripService';
 
 import { Defaults } from '../../constants/Defaults';
-import {QuoteService} from "../../services/QuoteService";
+import { QuoteService } from '../../services/QuoteService';
 
 @Component({
   selector: 'app',
@@ -27,7 +27,7 @@ export class ColorSchemr {
   colorStrips: Array<Object> = [];
   hash: string;
 
-  quote:string;
+  quote: string;
 
   constructor(
     public colorService: ColorService,
