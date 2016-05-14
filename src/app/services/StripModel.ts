@@ -13,6 +13,7 @@ export class StripModel {
   endColor: String = '#000000';
   isLocked: Boolean = false;
   opacity: any = 10;
+  fontColor: string = '';
 
   constructor(public index: Number = 0) {
     // not injecting it in constructor since it would have to be passed
@@ -23,6 +24,7 @@ export class StripModel {
     this.color = this.colorService.getRandomHexCode();
     let rgbObject = this.colorService.hexToRgb(this.color);
     this.rgbColor = `rgba(${rgbObject.r}, ${rgbObject.g}, ${rgbObject.b}, 1)`;
+    this.setFontColor(rgbObject);
   };
 
   updateColor () {
@@ -42,7 +44,18 @@ export class StripModel {
     }
 
     this.color = hexColor;
+    this.setFontColor(rgbObject);
   };
 
   init () {};
+
+  private setFontColor(rgbObject) {
+    let fontWeight = 1 - ( 0.299 * rgbObject.r + 0.587 * rgbObject.g + 0.114 * rgbObject.b) / 255;
+
+    if (fontWeight < 0.5) {
+      this.fontColor = '#20172C';
+    } else {
+      this.fontColor = '#FFF';
+    }
+  }
 }
