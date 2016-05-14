@@ -33,15 +33,15 @@ export class ColorService {
     });
 
     let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexColor);
-    return result ? {
-      r: parseInt(result[1], 16),
-      g: parseInt(result[2], 16),
-      b: parseInt(result[3], 16)
-    } : {
-      r: undefined,
-      g: undefined,
-      b: undefined
-    };
+    return result ? [
+      parseInt(result[1], 16),
+      parseInt(result[2], 16),
+      parseInt(result[3], 16)
+    ] : [
+      undefined,
+      undefined,
+      undefined
+    ];
   };
 
   componentToHex(c) {
@@ -51,5 +51,35 @@ export class ColorService {
 
   rgbToHex(r, g, b) {
     return '#' + this.componentToHex(r) + this.componentToHex(g) + this.componentToHex(b);
+  };
+
+  getRandomRGB (strip) {
+    let redComponentRange = 0;
+    let greenComponentRange = 0;
+    let blueComponentRange = 0;
+
+    if (strip.isRed) {
+      redComponentRange = Math.floor(Math.random() * (0 - 255 + 1) + 255);
+    }
+    if (strip.isGreen) {
+      greenComponentRange = Math.floor(Math.random() * (0 - 255 + 1) + 255);
+    }
+    if (strip.isBlue) {
+      blueComponentRange = Math.floor(Math.random() * (0 - 255 + 1) + 255);
+    }
+
+    return [
+      redComponentRange,
+      greenComponentRange,
+      blueComponentRange
+    ];
+  };
+
+  getFormattedRGB (strip) {
+    let rgb = this.getRandomRGB(strip);
+    return {
+      formatted: `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${strip.opacity / 10 || 1})`,
+      raw: rgb
+    };
   };
 }
