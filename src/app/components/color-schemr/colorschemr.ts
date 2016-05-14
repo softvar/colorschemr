@@ -27,6 +27,8 @@ export class ColorSchemr {
   colorStrips: Array<Object> = [];
   hash: string;
 
+  quote:string;
+
   constructor(
     public colorService: ColorService,
     public stripService: StripService,
@@ -41,15 +43,14 @@ export class ColorSchemr {
   }
   init() {
     let stripsLength = Defaults.STRIP_INIT_COUNT;
-    this.quoteService.getQuote().subscribe(function (quote) {
-      console.log(quote);
-    });
+    this.getQuote();
     this.colorStrips = this.stripService.init(stripsLength);
     // console.log(this.colorStrips);
   };
 
   updateStripSettings () {
     this.stripService.updateColor();
+    this.getQuote();
   };
 
   eventHandler (ev) {
@@ -78,6 +79,12 @@ export class ColorSchemr {
     // ev.preventDefault();
     // ev.stopPropagation();
     this.stripService.updateOpacity(strip, index);
+  }
+
+  getQuote() {
+    this.quoteService.getQuote().subscribe(function (quote) {
+      this.quote = quote;
+    });
   }
 
 }
