@@ -9,6 +9,7 @@ import { StripService } from '../../services/StripService';
 
 import { Defaults } from '../../constants/Defaults';
 import { QuoteService } from '../../services/QuoteService';
+import { SchemrPreviewer } from '../previewer/Previewer';
 
 @Component({
   selector: 'app',
@@ -18,7 +19,7 @@ import { QuoteService } from '../../services/QuoteService';
     'app/components/color-schemr/color-schemr.css'
   ],
   providers: [ ColorService, StripService, QuoteService ],
-  directives: [ Header, Footer ],
+  directives: [ Header, Footer, SchemrPreviewer ],
   pipes: []
 })
 export class ColorSchemr {
