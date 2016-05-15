@@ -54,7 +54,7 @@
             [ngClass]="{'close--left': i === 0, 'close--right': i !== 0}"
             [hidden]="!colorStrip.isHovered || colorStrips.length === 1"
             (click)="removeStrip($event, i, colorStrip)">
-            <i id="remove-strip" class="material-icons" style="font-size: 20px">close</i>
+            <i id="remove-strip" class="material-icons" style="font-size: 20px" [ngStyle]="{ 'color' : colorStrip.fontColor }">close</i>
         </div>
 
         <div class="absolute" style="bottom: 320px; width: 100%;"
@@ -116,7 +116,7 @@
         <div class="mdl-tooltip" for="add-last">Add to last</div>
     </div>
 </div>
-<div class="text--center  quotes-area" *ngIf="quote && quote.content">
+<div class="text--center  quote-area" *ngIf="quote && quote.content">
     <i [innerHTML]="quote.content | escapehtmltags"></i>
     <i><strong> - {{ quote.title || 'Anonymous' }}</strong></i>
 </div>
