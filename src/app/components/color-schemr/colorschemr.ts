@@ -28,6 +28,8 @@ export class ColorSchemr {
   hash: string;
 
   quote: string;
+  discoModeInterval: any;
+  pianoModeInterval: any;
 
   constructor(
     public colorService: ColorService,
@@ -46,6 +48,7 @@ export class ColorSchemr {
     this.getQuote();
     this.colorStrips = this.stripService.init(stripsLength);
     // console.log(this.colorStrips);
+    this.pianoMode();
   };
 
   updateStripSettings () {
@@ -92,4 +95,20 @@ export class ColorSchemr {
       this.quote = quote;
     });
   };
+
+  discoMode() {
+    this.discoModeInterval = setInterval(() => {
+      this.eventHandler({
+        keyCode: 32
+      });
+    }, 1000);
+  }
+
+  pianoMode() {
+    this.pianoModeInterval = setInterval(() => {
+      this.eventHandler({
+        keyCode: Math.floor(Math.random() * 10) + 48
+      });
+    }, 500);
+  }
 }
