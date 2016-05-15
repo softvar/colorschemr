@@ -1,6 +1,6 @@
 <app-header></app-header>
-<div class="width: 100%;">
-    <div style="overflow:hidden; float: left;" [ngStyle]="{ 'width': showPreviewMode ? '75%' : '100%' }">
+<div style="width: 100%;">
+    <div style="overflow:hidden; float: left;margin-bottom: 10px;" [ngStyle]="{ 'width': showPreviewMode ? '75%' : '100%' }">
         <div style="height: 585px;" (window:keypress)="eventHandler($event)">
             <div class="mdl-grid global-settings-bar">
                 <div class="mdl-cell mdl-cell--1-col" style="padding: 4px;">
@@ -109,7 +109,7 @@
                     </div>
                 </div>
 
-                <div mdl class="absolute" style="top: 100px;width: 100%;" [hidden]="!colorStrip.isHovered">
+                <div class="absolute" style="top: 100px;width: 100%;" [hidden]="!colorStrip.isHovered">
                     <div class="mdl-grid" style="padding: 0; margin-left: 20px;">
                         <div class="mdl-cell mdl-cell--3-col">
                             <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" [attr.for]="'checkbox-red-' + i" style="text-align: left;">
@@ -151,4 +151,3 @@
     <i [innerHTML]="quote.content | escapehtmltags"></i>
     <i><strong> - {{ quote.title || 'Anonymous' }}</strong></i>
 </div>
-<app-footer></app-footer>

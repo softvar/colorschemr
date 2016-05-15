@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { Router, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
 
 import { MDL } from '../shared/mdl';
@@ -13,6 +13,7 @@ import { MDL } from '../shared/mdl';
   pipes: []
 })
 export class Header {
+  @Input() isAboutPage;
   constructor() {}
   ngOnInit() {}
 }

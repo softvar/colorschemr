@@ -39,7 +39,7 @@ export class ColorSchemr {
 
   quotes: Array<Object> = [];
   currentQuoteIndex: number = 0;
-  quote: Object = {};
+  quote: any = {};
 
   isDiscoMode: boolean = false;
   isPianoMode: boolean = false;
@@ -134,7 +134,7 @@ export class ColorSchemr {
     } else {
       this.quote = this.quotes[this.currentQuoteIndex];
       this.currentQuoteIndex++;
-      if (this.quote['content'].length > 80) {
+      if (this.quote.content.length > 80) {
         this.setCurrentQuote();
       }
     }
