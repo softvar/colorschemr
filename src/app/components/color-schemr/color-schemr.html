@@ -35,25 +35,33 @@
                         </div>
                     </div>
                 </div>
-                <div class="mdl-cell mdl-cell--4-col" style="padding: 4px;">
+                <div class="mdl-cell mdl-cell--3-col" style="padding: 4px;">
                     <strong>Hit Spacebar to generate colors</strong>
                 </div>
-                <div class="mdl-cell mdl-cell--3-col" style="padding: 4px;">
-                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="disco-switch">
-                        <input #discoSwitcher type="checkbox" id="disco-switch" class="mdl-switch__input" (change)="toggleDiscoMode(discoSwitcher.checked)">
-                        <span class="mdl-switch__label">Disco Mode</span>
-                    </label>
+                <div class="mdl-cell mdl-cell--4-col" style="padding: 4px;">
+                    <div class="mdl-grid" style="padding: 0;">
+                        <div class="mdl-cell mdl-cell--4-col">
+                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="disco-switch">
+                                <input #discoSwitcher type="checkbox" id="disco-switch" class="mdl-switch__input" (change)="toggleDiscoMode(discoSwitcher.checked)">
+                                <span class="mdl-switch__label">Disco</span>
+                            </label>
+                        </div>
 
-                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="piano-switch">
-                        <input #pianoSwitcher type="checkbox" id="piano-switch" class="mdl-switch__input" (change)="togglePianoMode(pianoSwitcher.checked)">
-                        <span class="mdl-switch__label">Piano Mode</span>
-                    </label>
+                        <div class="mdl-cell mdl-cell--4-col">
+                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="piano-switch">
+                                <input #pianoSwitcher type="checkbox" id="piano-switch" class="mdl-switch__input" (change)="togglePianoMode(pianoSwitcher.checked)">
+                                <span class="mdl-switch__label">Piano</span>
+                            </label>
+                        </div>
 
-                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="preview-switch">
-                        <input #schemerPreview type="checkbox" id="preview-switch" class="mdl-switch__input"
-                               (change)="showPreviewMode = schemerPreview.checked;">
-                        <span class="mdl-switch__label">Preview Mode</span>
-                    </label>
+                        <div class="mdl-cell mdl-cell--4-col">
+                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="preview-switch">
+                                <input #schemerPreview type="checkbox" id="preview-switch" class="mdl-switch__input"
+                                       (change)="showPreviewMode = schemerPreview.checked;">
+                                <span class="mdl-switch__label">Preview</span>
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="side-menus" style="float: left">
@@ -102,7 +110,7 @@
                 </div>
 
                 <div mdl class="absolute" style="top: 100px;width: 100%;" [hidden]="!colorStrip.isHovered">
-                    <div class="mdl-grid" style="padding: 0;">
+                    <div class="mdl-grid" style="padding: 0; margin-left: 20px;">
                         <div class="mdl-cell mdl-cell--3-col">
                             <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" [attr.for]="'checkbox-red-' + i" style="text-align: left;">
                                 <input type="checkbox" id="checkbox-red-{{ i }}" class="mdl-checkbox__input" checked [(ngModel)]="colorStrip.isRed">
@@ -110,7 +118,7 @@
                             </label>
                         </div>
                     </div>
-                    <div class="mdl-grid" style="padding: 0;">
+                    <div class="mdl-grid" style="padding: 0; margin-left: 20px;">
                         <div class="mdl-cell mdl-cell--3-col">
                             <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" [attr.for]="'checkbox-green-' + i" style="text-align: left;">
                                 <input type="checkbox" id="checkbox-green-{{ i }}" class="mdl-checkbox__input" checked [(ngModel)]="colorStrip.isGreen">
@@ -118,7 +126,7 @@
                             </label>
                         </div>
                     </div>
-                    <div class="mdl-grid" style="padding: 0;">
+                    <div class="mdl-grid" style="padding: 0; margin-left: 20px;">
                         <div class="mdl-cell mdl-cell--3-col">
                             <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" [attr.for]="'checkbox-blue-' + i" style="text-align: left;">
                                 <input type="checkbox" id="checkbox-blue-{{ i }}" class="mdl-checkbox__input" checked [(ngModel)]="colorStrip.isBlue">

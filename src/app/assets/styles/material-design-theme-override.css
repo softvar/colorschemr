@@ -18,3 +18,7 @@
 .mdl-cell {
 	margin: 4px !important;
 }
+
+.mdl-switch__label {
+	font-size: 14px;
+}
