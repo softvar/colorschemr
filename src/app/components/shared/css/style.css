@@ -267,7 +267,7 @@
 .android-wear-section {
   position: relative;
   background-size: cover;
-  height: 650px;
+  height: 670px;
 }
 
 .android-wear-band {
@@ -431,7 +431,7 @@
   .android-wear-section {
     position: relative;
     background-size: cover;
-    height: 980px;
+    height: 1010px;
   }
 
   .android-navigation-container {
