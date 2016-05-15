@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { NgStyle } from '@angular/common';
 
+import { MDL } from '../shared/mdl';
 import { Header } from '../shared/header';
 import { Footer } from '../shared/footer';
 
@@ -19,12 +20,11 @@ import { SchemrPreviewer } from '../previewer/Previewer';
     'app/components/color-schemr/color-schemr.css'
   ],
   providers: [ ColorService, StripService, QuoteService ],
-  directives: [ Header, Footer, SchemrPreviewer ],
+  directives: [ MDL, Header, Footer, SchemrPreviewer ],
   pipes: []
 })
 export class ColorSchemr {
-  rangeStartColor: Array<String> = [];
-  rangeEndColor: Array<String> = [];
+  rangeRGBColor: Array<Object> = [];
   colorStrips: Array<Object> = [];
   hash: string;
 
@@ -58,6 +58,12 @@ export class ColorSchemr {
     // console.log(ev, ev.keyCode, ev.keyIdentifier);
     if (ev.keyCode === 32) {
       this.updateStripSettings();
+    } else if ((ev.keyCode >= 49 && ev.keyCode <= 57)) {
+      this.stripService.updateColorByIndex(ev.keyCode - 49);
+    } else if ((ev.keyCode >= 97 && ev.keyCode <= 105)) {
+      this.stripService.updateColorByIndex(ev.keyCode - 97);
+    } else if ((ev.keyCode === 48) || (ev.keyCode === 96)) {
+      this.stripService.updateColorByIndex(9);
     }
   };
   onStripClick (ev, index, strip) {
@@ -80,12 +86,11 @@ export class ColorSchemr {
     // ev.preventDefault();
     // ev.stopPropagation();
     this.stripService.updateOpacity(strip, index);
-  }
+  };
 
   getQuote() {
     this.quoteService.getQuote().subscribe(function (quote) {
       this.quote = quote;
     });
-  }
-
+  };
 }

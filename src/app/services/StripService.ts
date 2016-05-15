@@ -29,11 +29,14 @@ export class StripService {
     }
   };
 
+  updateColorByIndex (index) {
+    if (this.strips[index]) {
+      this.strips[index].updateColor();
+    }
+  }
+
   updateOpacity (strip: StripModel, index: number) {
-    // console.log(strip.opacity)
-    this.strips[index].updateColor();
-    // this.strips[index].opacity = Math.round(strip.opacity / 10);
-    // rgb to hex
+    this.strips[index].updateOpacity(strip);
   };
 
   flush () {
