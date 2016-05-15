@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { NgStyle } from '@angular/common';
+import { NgStyle, NgIf } from '@angular/common';
 
 import { MDL } from '../shared/mdl';
 import { Header } from '../shared/header';
@@ -11,6 +11,7 @@ import { StripService } from '../../services/StripService';
 import { Defaults } from '../../constants/Defaults';
 import { QuoteService } from '../../services/QuoteService';
 
+import { EscapeHtmlTagsPipe } from '../../pipes/EscapeHtmlTagsPipe';
 @Component({
   selector: 'app',
   templateUrl: 'app/components/color-schemr/color-schemr.html',
@@ -20,16 +21,23 @@ import { QuoteService } from '../../services/QuoteService';
   ],
   providers: [ ColorService, StripService, QuoteService ],
   directives: [ MDL, Header, Footer ],
-  pipes: []
+  pipes: [ EscapeHtmlTagsPipe ]
 })
 export class ColorSchemr {
   rangeRGBColor: Array<Object> = [];
-  colorStrips: Array<Object> = [];
+  // TS Error: Property 'isLocked' does not exist on type 'Object'.
+  // http://stackoverflow.com/questions/18083389/ignore-typescript-errors-property-does-not-exist-on-value-of-type
+  colorStrips: Array<any> = [];
+  allStrips: any = {};
   hash: string;
+<<<<<<< HEAD
 
   quote: string;
   discoModeInterval: any;
   pianoModeInterval: any;
+=======
+  quote: Object = {};
+>>>>>>> 2a37eb17f20b98f34170ec57e4609c9920394080
 
   constructor(
     public colorService: ColorService,
@@ -45,6 +53,12 @@ export class ColorSchemr {
   }
   init() {
     let stripsLength = Defaults.STRIP_INIT_COUNT;
+    this.allStrips = {
+      areLocked: false,
+      isRed: true,
+      isGreen: true,
+      isBlue: true
+    };
     this.getQuote();
     this.colorStrips = this.stripService.init(stripsLength);
     // console.log(this.colorStrips);
@@ -91,7 +105,7 @@ export class ColorSchemr {
   };
 
   getQuote() {
-    this.quoteService.getQuote().subscribe(function (quote) {
+    this.quoteService.getQuote().subscribe((quote) => {
       this.quote = quote;
     });
   };
@@ -110,5 +124,20 @@ export class ColorSchemr {
         keyCode: Math.floor(Math.random() * 10) + 48
       });
     }, 500);
+  }
+
+  toggleStripsLock () {
+    this.allStrips.areLocked = !this.allStrips.areLocked;
+    for (let i = 0; i < this.colorStrips.length; i++) {
+      this.colorStrips[i].isLocked = this.allStrips.areLocked;
+    }
+  };
+
+  toggleStripsRGBComponents () {
+    for (let i = 0; i < this.colorStrips.length; i++) {
+      this.colorStrips[i].isRed = this.allStrips.isRed;
+      this.colorStrips[i].isGreen = this.allStrips.isGreen;
+      this.colorStrips[i].isBlue = this.allStrips.isBlue;
+    }
   }
 }
