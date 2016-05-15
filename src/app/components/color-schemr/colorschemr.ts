@@ -11,6 +11,7 @@ import { StripService } from '../../services/StripService';
 import { Defaults } from '../../constants/Defaults';
 import { QuoteService } from '../../services/QuoteService';
 
+import { EscapeHtmlTagsPipe } from '../../pipes/EscapeHtmlTagsPipe';
 @Component({
   selector: 'app',
   templateUrl: 'app/components/color-schemr/color-schemr.html',
@@ -20,14 +21,16 @@ import { QuoteService } from '../../services/QuoteService';
   ],
   providers: [ ColorService, StripService, QuoteService ],
   directives: [ MDL, Header, Footer ],
-  pipes: []
+  pipes: [ EscapeHtmlTagsPipe ]
 })
 export class ColorSchemr {
   rangeRGBColor: Array<Object> = [];
-  colorStrips: Array<Object> = [];
+  // TS Error: Property 'isLocked' does not exist on type 'Object'.
+  // http://stackoverflow.com/questions/18083389/ignore-typescript-errors-property-does-not-exist-on-value-of-type
+  colorStrips: Array<any> = [];
+  allStrips: any = {};
   hash: string;
-
-  quote: string;
+  quote: Object = {};
 
   constructor(
     public colorService: ColorService,
@@ -43,6 +46,12 @@ export class ColorSchemr {
   }
   init() {
     let stripsLength = Defaults.STRIP_INIT_COUNT;
+    this.allStrips = {
+      areLocked: false,
+      isRed: true,
+      isGreen: true,
+      isBlue: true
+    };
     this.getQuote();
     this.colorStrips = this.stripService.init(stripsLength);
     // console.log(this.colorStrips);
@@ -88,8 +97,23 @@ export class ColorSchemr {
   };
 
   getQuote() {
-    this.quoteService.getQuote().subscribe(function (quote) {
+    this.quoteService.getQuote().subscribe((quote) => {
       this.quote = quote;
     });
   };
+
+  toggleStripsLock () {
+    this.allStrips.areLocked = !this.allStrips.areLocked;
+    for (let i = 0; i < this.colorStrips.length; i++) {
+      this.colorStrips[i].isLocked = this.allStrips.areLocked;
+    }
+  };
+
+  toggleStripsRGBComponents () {
+    for (let i = 0; i < this.colorStrips.length; i++) {
+      this.colorStrips[i].isRed = this.allStrips.isRed;
+      this.colorStrips[i].isGreen = this.allStrips.isGreen;
+      this.colorStrips[i].isBlue = this.allStrips.isBlue;
+    }
+  }
 }

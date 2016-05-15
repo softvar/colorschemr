@@ -1,5 +1,41 @@
 <app-header></app-header>
-<div style="height: 650px;" (window:keypress)="eventHandler($event)">
+<div style="height: 585px;" (window:keypress)="eventHandler($event)">
+    <div class="mdl-grid" style="padding: 0; width: 90%; background: #F7F7F7; margin-bottom: 5px; border: 1px solid #D6D6D6;">
+        <div class="mdl-cell mdl-cell--4-col">
+            <div style="cursor: pointer;" (click)="toggleStripsLock()">
+                <i class="material-icons" [hidden]="allStrips.areLocked" style="vertical-align: middle;">lock_open</i>
+                <i class="material-icons" [hidden]="!allStrips.areLocked" style="vertical-align: middle;">lock</i>
+                <i style="vertical-align: middle;">Click to {{ allStrips.areLocked ? ' unlock' : ' lock' }} all strips</i>
+            </div>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col">
+            <div class="mdl-grid" style="padding: 0;">
+              <div class="mdl-cell mdl-cell--2-col">
+                  <i class="material-icons" id="rgb-selection-guide" style="color: #777;" tabindex="0">info</i>
+                  <span class="mdl-tooltip inline" for="rgb-selection-guide">Select RGB components to get colors in that range</span>
+              </div>
+              <div class="mdl-cell mdl-cell--3-col">
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-red" style="text-align: left;">
+                  <input type="checkbox" id="checkbox-red" class="mdl-checkbox__input" checked [(ngModel)]="allStrips.isRed" (ngModelChange)="toggleStripsRGBComponents()">
+                  <span>Red</span>
+                </label>
+              </div>
+              <div class="mdl-cell mdl-cell--3-col">
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-green" style="text-align: left;">
+                  <input type="checkbox" id="checkbox-green" class="mdl-checkbox__input" checked [(ngModel)]="allStrips.isGreen" (ngModelChange)="toggleStripsRGBComponents()">
+                  <span>Green</span>
+                </label>
+              </div>
+              <div class="mdl-cell mdl-cell--3-col">
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-blue" style="text-align: left;">
+                  <input type="checkbox" id="checkbox-blue" class="mdl-checkbox__input" checked [(ngModel)]="allStrips.isBlue" (ngModelChange)="toggleStripsRGBComponents()">
+                  <span>Blue</span>
+                </label>
+              </div>
+            </div>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col">Add other options here</div>
+    </div>
     <div class="side-menus" style="float: left">
         <i id="add-front" class="material-icons plus-icon" (click)="addStrip($event, true);">add</i>
         <div class="mdl-tooltip" for="add-front">Add to front</div>
@@ -77,4 +113,5 @@
         <div class="mdl-tooltip" for="add-last">Add to last</div>
     </div>
 </div>
+<div class="text--center" [innerHTML]="quote && quote.content + ' - ' + quote.title | escapehtmltags"></div>
 <app-footer></app-footer>

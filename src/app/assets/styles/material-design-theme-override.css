@@ -10,3 +10,7 @@
 .mdl-navigation .mdl-navigation__link {
 	color: #757575 !important;
 }
+
+.mdl-tooltip {
+	font-size: 12px !important;
+}

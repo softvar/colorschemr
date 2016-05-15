@@ -89,6 +89,12 @@ body {
 .relative {
 	position: relative;
 }
+.block {
+	display: block;
+}
+.inline {
+	display: inline-block;
+}
 
 
 
