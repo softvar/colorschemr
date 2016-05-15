@@ -7,7 +7,7 @@ import {Observable} from 'rxjs/Rx';
 
 export class QuoteService {
     private quotesApiUrl = 'http://quotesondesign.com/wp-json/posts' +
-        '?tags=color&filter[orderby]=rand&filter[posts_per_page]=1';
+        '?tags=color&filter[orderby]=rand&filter[posts_per_page]=25';
 
     constructor(private http: Http) {}
 
@@ -20,7 +20,7 @@ export class QuoteService {
 
     private extractData(res: Response) {
         if (res.status === 200) {
-            return res.json()[0] || {};
+            return res.json() || {};
         }
     }
 

@@ -37,6 +37,8 @@ export class ColorSchemr {
   discoModeInterval: any;
   pianoModeInterval: any;
 
+  quotes: Array<Object> = [];
+  currentQuoteIndex: number = 0;
   quote: Object = {};
 
   constructor(
@@ -59,14 +61,14 @@ export class ColorSchemr {
       isGreen: true,
       isBlue: true
     };
-    this.getQuote();
+    this.setCurrentQuote();
     this.colorStrips = this.stripService.init(stripsLength);
     // console.log(this.colorStrips);
   };
 
   updateStripSettings () {
     this.stripService.updateColor();
-    this.getQuote();
+    this.setCurrentQuote();
   };
 
   eventHandler (ev) {
@@ -104,10 +106,28 @@ export class ColorSchemr {
   };
 
   getQuote() {
-    this.quoteService.getQuote().subscribe((quote) => {
-      this.quote = quote;
+    this.quoteService.getQuote().subscribe((quotes) => {
+      Array.prototype.push.apply(this.quotes, quotes);
+      this.setCurrentQuote();
     });
   };
+
+  setQuote() {
+    if (this.currentQuoteIndex === 0 && this.quotes.length === 0) {
+      this.getQuote();
+    } else {
+      this.setCurrentQuote();
+    }
+  }
+
+  setCurrentQuote() {
+    if (this.quotes.length - this.currentQuoteIndex <= 5) {
+      this.getQuote();
+    } else {
+      this.quote = this.quotes[this.currentQuoteIndex];
+      this.currentQuoteIndex++;
+    }
+  }
 
   discoMode() {
     this.discoModeInterval = setInterval(() => {
