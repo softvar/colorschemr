@@ -1,11 +1,11 @@
 <app-header></app-header>
 <div style="height: 585px;" (window:keypress)="eventHandler($event)">
-    <div class="mdl-grid" style="padding: 0; width: 90%; background: #F7F7F7; margin-bottom: 5px; border: 1px solid #D6D6D6;">
-        <div class="mdl-cell mdl-cell--4-col">
+    <div class="mdl-grid global-settings-bar">
+        <div class="mdl-cell mdl-cell--1-col" style="padding: 4px;">
             <div style="cursor: pointer;" (click)="toggleStripsLock()">
-                <i class="material-icons" [hidden]="allStrips.areLocked" style="vertical-align: middle;">lock_open</i>
-                <i class="material-icons" [hidden]="!allStrips.areLocked" style="vertical-align: middle;">lock</i>
-                <i style="vertical-align: middle;">Click to {{ allStrips.areLocked ? ' unlock' : ' lock' }} all strips</i>
+                <i id="global-lock-guide" class="material-icons" [hidden]="allStrips.areLocked" style="vertical-align: middle;">lock_open</i>
+                <i id="global-lock-guide" class="material-icons" [hidden]="!allStrips.areLocked" style="vertical-align: middle;">lock</i>
+                <span class="mdl-tooltip inline" for="global-lock-guide">Click to {{ allStrips.areLocked ? ' unlock' : ' lock' }} all strips</span>
             </div>
         </div>
         <div class="mdl-cell mdl-cell--4-col">
@@ -34,7 +34,10 @@
               </div>
             </div>
         </div>
-        <div class="mdl-cell mdl-cell--4-col">Add other options here</div>
+        <div class="mdl-cell mdl-cell--4-col" style="padding: 4px;">
+            <strong>Hit Spacebar to generate colors</strong>
+        </div>
+        <div class="mdl-cell mdl-cell--3-col" style="padding: 4px;">Add other options here</div>
     </div>
     <div class="side-menus" style="float: left">
         <i id="add-front" class="material-icons plus-icon" (click)="addStrip($event, true);">add</i>
@@ -113,5 +116,8 @@
         <div class="mdl-tooltip" for="add-last">Add to last</div>
     </div>
 </div>
-<div class="text--center" [innerHTML]="quote && quote.content + ' - ' + quote.title | escapehtmltags"></div>
+<div class="text--center  quotes-area" *ngIf="quote && quote.content">
+    <i [innerHTML]="quote.content | escapehtmltags"></i>
+    <i><strong> - {{ quote.title || 'Anonymous' }}</strong></i>
+</div>
 <app-footer></app-footer>

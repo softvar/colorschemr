@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { NgStyle } from '@angular/common';
+import { NgStyle, NgIf } from '@angular/common';
 
 import { MDL } from '../shared/mdl';
 import { Header } from '../shared/header';

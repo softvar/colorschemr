@@ -14,3 +14,7 @@
 .mdl-tooltip {
 	font-size: 12px !important;
 }
+
+.mdl-cell {
+	margin: 4px !important;
+}
