@@ -26,18 +26,16 @@ import { EscapeHtmlTagsPipe } from '../../pipes/EscapeHtmlTagsPipe';
 export class ColorSchemr {
   rangeRGBColor: Array<Object> = [];
   // TS Error: Property 'isLocked' does not exist on type 'Object'.
-  // http://stackoverflow.com/questions/18083389/ignore-typescript-errors-property-does-not-exist-on-value-of-type
+  // http://stackoverflow.com/questions/18083389/
+  // ignore-typescript-errors-property-does-not-exist-on-value-of-type
   colorStrips: Array<any> = [];
   allStrips: any = {};
   hash: string;
-<<<<<<< HEAD
 
-  quote: string;
   discoModeInterval: any;
   pianoModeInterval: any;
-=======
+
   quote: Object = {};
->>>>>>> 2a37eb17f20b98f34170ec57e4609c9920394080
 
   constructor(
     public colorService: ColorService,
@@ -62,7 +60,6 @@ export class ColorSchemr {
     this.getQuote();
     this.colorStrips = this.stripService.init(stripsLength);
     // console.log(this.colorStrips);
-    this.pianoMode();
   };
 
   updateStripSettings () {
@@ -123,7 +120,7 @@ export class ColorSchemr {
       this.eventHandler({
         keyCode: Math.floor(Math.random() * 10) + 48
       });
-    }, 500);
+    }, 250);
   }
 
   toggleStripsLock () {
@@ -138,6 +135,22 @@ export class ColorSchemr {
       this.colorStrips[i].isRed = this.allStrips.isRed;
       this.colorStrips[i].isGreen = this.allStrips.isGreen;
       this.colorStrips[i].isBlue = this.allStrips.isBlue;
+    }
+  }
+
+  toggleDiscoMode(mode) {
+    if (mode) {
+      this.discoMode();
+    } else {
+      clearInterval(this.discoModeInterval);
+    }
+  }
+
+  togglePianoMode(mode) {
+    if (mode) {
+      this.pianoMode();
+    } else {
+      clearInterval(this.pianoModeInterval);
     }
   }
 }

@@ -37,7 +37,17 @@
         <div class="mdl-cell mdl-cell--4-col" style="padding: 4px;">
             <strong>Hit Spacebar to generate colors</strong>
         </div>
-        <div class="mdl-cell mdl-cell--3-col" style="padding: 4px;">Add other options here</div>
+        <div class="mdl-cell mdl-cell--3-col" style="padding: 4px;">
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="disco-switch">
+                <input #discoSwitcher type="checkbox" id="disco-switch" class="mdl-switch__input" (change)="toggleDiscoMode(discoSwitcher.checked)">
+                <span class="mdl-switch__label">Disco Mode</span>
+            </label>
+
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="piano-switch">
+                <input #pianoSwitcher type="checkbox" id="piano-switch" class="mdl-switch__input" (change)="togglePianoMode(pianoSwitcher.checked)">
+                <span class="mdl-switch__label">Piano Mode</span>
+            </label>
+        </div>
     </div>
     <div class="side-menus" style="float: left">
         <i id="add-front" class="material-icons plus-icon" (click)="addStrip($event, true);">add</i>
