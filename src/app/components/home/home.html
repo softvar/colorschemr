@@ -1,20 +1,17 @@
 <!-- <loader msg="loading passed message...yay..checked..."></loader> -->
 <div mdl class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <div class="android-header mdl-layout__header mdl-layout__header--waterfall">
-    <div class="mdl-layout__header-row">
-      <span class="android-title mdl-layout-title" style="color: #6ab344;">
-        Color Schemer
-      </span>
+    <div class="mdl-layout__header-row" style="background: whitesmoke">
       <!-- Add spacer, to align navigation to the right in desktop -->
       <div class="android-header-spacer mdl-layout-spacer"></div>
-      <div class="android-search-box mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
+     <!--  <div class="android-search-box mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
         <label class="mdl-button mdl-js-button mdl-button--icon" for="search-field">
           <i class="material-icons">search</i>
         </label>
         <div class="mdl-textfield__expandable-holder">
           <input class="mdl-textfield__input" type="text" id="search-field">
         </div>
-      </div>
+      </div> -->
       <!-- Navigation -->
       <div class="android-navigation-container">
         <nav class="android-navigation mdl-navigation">
@@ -23,9 +20,9 @@
         </nav>
       </div>
       <span class="android-mobile-title mdl-layout-title">
-
+        <img class="android-logo-image" src="app/assets/images/cs-64.png">
       </span>
-      <button class="android-more-button mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button">
+      <!-- <button class="android-more-button mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button">
         <i class="material-icons">more_vert</i>
       </button>
       <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
@@ -33,7 +30,7 @@
         <li class="mdl-menu__item">Horizontal - Two</li>
         <li class="mdl-menu__item">Horizontal - Three</li>
         <li disabled class="mdl-menu__item">Vertical - One</li>
-      </ul>
+      </ul> -->
     </div>
   </div>
   <div class="android-drawer mdl-layout__drawer">
@@ -46,39 +43,44 @@
       <a class="mdl-navigation__link mdl-typography--text-uppercase" [routerLink]=" ['/About'] ">About</a>
 
       <div class="android-drawer-separator"></div>
-      <span href="" style="color: #8bc34a; padding: 5px 40px; font-size: 16px;">Share</span>
+      <span href="" style="color: #7AA8FB; padding: 5px 40px; font-size: 16px;">Share</span>
       <div class="android-drawer-separator"></div>
 
       <a class="mdl-navigation__link" href="">Twitter</a>
       <a class="mdl-navigation__link" href="">Facebook</a>
 
       <div class="android-drawer-separator"></div>
-      <span href="" style="color: #8bc34a; padding: 5px 40px; font-size: 16px;">Find us on</span>
+      <span href="" style="color: #7AA8FB; padding: 5px 40px; font-size: 16px;">Find us on</span>
       <div class="android-drawer-separator"></div>
 
-      <a class="mdl-navigation__link" href="">Facebook</a>
+      <!-- <a class="mdl-navigation__link" href="">Facebook</a>
       <a class="mdl-navigation__link" href="">Twitter</a>
-      <a class="mdl-navigation__link" href="">Google+</a>
-      <a class="mdl-navigation__link" href="">Github</a>
+      <a class="mdl-navigation__link" href="">Google+</a> -->
+      <a class="mdl-navigation__link" href="https://github.com/rumblex/angularattack2016-colorschemr">Github</a>
     </nav>
   </div>
 
   <div class="android-content mdl-layout__content">
     <a name="top"></a>
     <div class="android-be-together-section mdl-typography--text-center">
-      <div class="logo-font android-slogan">be together. not the same.</div>
-      <div class="logo-font android-sub-slogan">welcome to android... be yourself. do your thing. see what's going on.</div>
-      <div class="logo-font android-create-character">
-        <a href=""><img src="app/assets/images/andy.png"> create your android character</a>
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--5-col">
+          <img src="app/assets/images/cs-128.png" style="padding-top: 160px;" />
+          <div class="logo-font android-slogan" style="color: #7AA8FB">Color Schemr</div>
+          <div class="logo-font android-sub-slogan" style="color: #ABABAB">Generate your always aspiring Color Scheme with jaw-dropping feature list</div>
+        </div>
+        <div class="mdl-cell mdl-cell--7-col">
+          <img src="app/assets/images/preview.png" width="715px" height="600px"/>
+        </div>
       </div>
 
-      <a href="#screens">
+<!--       <a href="#screens">
         <button class="android-fab mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-js-ripple-effect">
           <i class="material-icons">expand_more</i>
         </button>
-      </a>
+      </a> -->
     </div>
-    <div class="android-screen-section mdl-typography--text-center">
+    <!-- <div class="android-screen-section mdl-typography--text-center">
       <a name="screens"></a>
       <div class="mdl-typography--display-1-color-contrast">Powering screens of all sizes</div>
       <div class="android-screens">
@@ -114,120 +116,97 @@
           <a class="android-link mdl-typography--font-regular mdl-typography--text-uppercase mdl-typography--text-left" href="">Coming Soon: Android Auto</a>
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="android-wear-section">
       <div class="android-wear-band">
         <div class="android-wear-band-text">
-          <div class="mdl-typography--display-2 mdl-typography--font-thin">The best of Google built in</div>
+          <div class="mdl-typography--display-2 mdl-typography--font-thin">Color Palettes one will fall in love with</div>
           <p class="mdl-typography--headline mdl-typography--font-thin">
-            Android works perfectly with your favourite apps like Google Maps,
-            Calendar and YouTube.
+            Focus more on product and let Color Schemr decides your theme.
           </p>
           <p>
-            <a class="mdl-typography--font-regular mdl-typography--text-uppercase android-alt-link" href="">
-              See what's new in the Play Store&nbsp;<i class="material-icons">chevron_right</i>
+            <a class="mdl-typography--font-regular mdl-typography--text-uppercase android-alt-link" href="#features">
+              See what's all new in the Color Schemre&nbsp;<i class="material-icons">chevron_right</i>
             </a>
           </p>
         </div>
       </div>
     </div>
-    <div class="android-customized-section">
+    <div class="android-customized-section" id="features">
       <div class="android-customized-section-text">
-        <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Customised by you, for you</div>
+        <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast" style="font-size: 34px;">Colours and so much more.</div>
         <p class="mdl-typography--font-light">
-          Put the stuff that you care about right on your home screen: the latest news, the weather or a stream of your recent photos.
+          Check out all you can do in Color Schemr
           <br>
-          <a href="" class="android-link mdl-typography--font-light">Customise your phone</a>
         </p>
       </div>
-      <div class="android-customized-section-image"></div>
-    </div>
-    <div class="android-more-section">
-      <div class="android-section-title mdl-typography--display-1-color-contrast">More from Android</div>
-      <div class="android-card-container mdl-grid">
-        <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
-          <div class="mdl-card__media">
-            <img src="app/assets/images/more-from-1.png">
-          </div>
-          <div class="mdl-card__title">
-             <h4 class="mdl-card__title-text">Get going on Android</h4>
-          </div>
-          <div class="mdl-card__supporting-text">
-            <span class="mdl-typography--font-light mdl-typography--subhead">Four tips to make your switch to Android quick and easy</span>
-          </div>
-          <div class="mdl-card__actions">
-             <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="">
-               Make the switch
-               <i class="material-icons">chevron_right</i>
-             </a>
-          </div>
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--4-col">
+          <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Generate Palettes</div>
+          <div>Upto a maximum of 10 strips</div>
         </div>
-
-        <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
-          <div class="mdl-card__media">
-            <img src="app/assets/images/more-from-4.png">
-          </div>
-          <div class="mdl-card__title">
-             <h4 class="mdl-card__title-text">Create your own Android character</h4>
-          </div>
-          <div class="mdl-card__supporting-text">
-            <span class="mdl-typography--font-light mdl-typography--subhead">Turn the little green Android mascot into you, your friends, anyone!</span>
-          </div>
-          <div class="mdl-card__actions">
-             <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="">
-               androidify.com
-               <i class="material-icons">chevron_right</i>
-             </a>
-          </div>
+        <div class="mdl-cell mdl-cell--4-col">
+          <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Add / Remove Strips</div>
+          <div>Add to front / last, Remove any strip</div>
         </div>
-
-        <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
-          <div class="mdl-card__media">
-            <img src="app/assets/images/more-from-2.png">
-          </div>
-          <div class="mdl-card__title">
-             <h4 class="mdl-card__title-text">Get a clean customisable home screen</h4>
-          </div>
-          <div class="mdl-card__supporting-text">
-            <span class="mdl-typography--font-light mdl-typography--subhead">A clean, simple, customisable home screen that comes with the power of Google Now: Traffic alerts, weather and much more, just a swipe away.</span>
-          </div>
-          <div class="mdl-card__actions">
-             <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="">
-               Download now
-               <i class="material-icons">chevron_right</i>
-             </a>
-          </div>
-        </div>
-
-        <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
-          <div class="mdl-card__media">
-            <img src="app/assets/images/more-from-3.png">
-          </div>
-          <div class="mdl-card__title">
-             <h4 class="mdl-card__title-text">Millions to choose from</h4>
-          </div>
-          <div class="mdl-card__supporting-text">
-            <span class="mdl-typography--font-light mdl-typography--subhead">Hail a taxi, find a recipe, run through a temple – Google Play has all the apps and games that let you make your Android device uniquely yours.</span>
-          </div>
-          <div class="mdl-card__actions">
-             <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="">
-               Find apps
-               <i class="material-icons">chevron_right</i>
-             </a>
-          </div>
+        <div class="mdl-cell mdl-cell--4-col">
+          <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Color Range</div>
+          <div>Get Colors from a specified range of [R, G, B]</div>
         </div>
       </div>
+      <!-- 2 row -->
+      <div class="mdl-grid" style="margin-top: 50px;">
+        <div class="mdl-cell mdl-cell--4-col">
+          <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Lock / Unlock</div>
+          <div>Control whether hitting spacebar should update color</div>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col">
+          <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Color Codes</div>
+          <div>Each strip color's in Hex and RGB code</div>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col">
+          <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Opacity</div>
+          <div>Adjust strip opacity</div>
+        </div>
+      </div>
+
+      <!-- 3 row -->
+      <div class="mdl-grid" style="margin-top: 50px;">
+        <div class="mdl-cell mdl-cell--4-col">
+          <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Random Quote</div>
+          <div>A color quote with each new palette generation</div>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col">
+          <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Global Settings</div>
+          <div>Lock / Unlock / Adjust Color Range for all Strips</div>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col">
+          <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Text Color Adjustment</div>
+          <div>Automatic text color adjustment based on strip color</div>
+        </div>
+      </div>
+
+      <!-- 4 row -->
+      <div class="mdl-grid" style="margin-top: 50px;">
+        <div class="mdl-cell mdl-cell--4-col">
+          <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Disco Mode</div>
+          <div>Text...</div>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col">
+          <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Piano Mode</div>
+          <div>Text..</div>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col">
+          <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Preview Mode</div>
+          <div>Text...</div>
+        </div>
+      </div>
+
+      <!-- <div class="android-customized-section-image"></div> -->
     </div>
 
     <footer class="android-footer mdl-mega-footer">
       <div class="mdl-mega-footer--top-section">
-        <div class="mdl-mega-footer--left-section">
-          <button class="mdl-mega-footer--social-btn"></button>
-          &nbsp;
-          <button class="mdl-mega-footer--social-btn"></button>
-          &nbsp;
-          <button class="mdl-mega-footer--social-btn"></button>
-        </div>
         <div class="mdl-mega-footer--right-section">
           <a class="mdl-typography--font-light" href="#top">
             Back to Top
@@ -237,35 +216,10 @@
       </div>
 
       <div class="mdl-mega-footer--middle-section">
-        <p class="mdl-typography--font-light">Satellite imagery: © 2014 Astrium, DigitalGlobe</p>
-        <p class="mdl-typography--font-light">Some features and devices may not be available in all areas</p>
+        <p class="mdl-typography--font-light">Angoor Tu: © 2016, AngularAttack Hackathon</p>
+        <p>Made with <i class="fa fa-heart" aria-hidden="true" style="color: #F96767;"></i> in India</p>
+        <p class="mdl-typography--font-light">Developed by <strong>Varun Malhotra</strong> & <strong>Gaurav Nanda</strong></p>
       </div>
-
-      <div class="mdl-mega-footer--bottom-section">
-        <a class="android-link android-link-menu mdl-typography--font-light" id="version-dropdown">
-          Versions
-          <i class="material-icons">arrow_drop_up</i>
-        </a>
-        <ul class="mdl-menu mdl-js-menu mdl-menu--top-left mdl-js-ripple-effect" for="version-dropdown">
-          <li class="mdl-menu__item">5.0 Lollipop</li>
-          <li class="mdl-menu__item">4.4 KitKat</li>
-          <li class="mdl-menu__item">4.3 Jelly Bean</li>
-          <li class="mdl-menu__item">Android History</li>
-        </ul>
-        <a class="android-link android-link-menu mdl-typography--font-light" id="developers-dropdown">
-          For Developers
-          <i class="material-icons">arrow_drop_up</i>
-        </a>
-        <ul class="mdl-menu mdl-js-menu mdl-menu--top-left mdl-js-ripple-effect" for="developers-dropdown">
-          <li class="mdl-menu__item">App developer resources</li>
-          <li class="mdl-menu__item">Android Open Source Project</li>
-          <li class="mdl-menu__item">Android SDK</li>
-          <li class="mdl-menu__item">Android for Work</li>
-        </ul>
-        <a class="android-link mdl-typography--font-light" href="">Blog</a>
-        <a class="android-link mdl-typography--font-light" href="">Privacy Policy</a>
-      </div>
-
     </footer>
   </div>
 </div>

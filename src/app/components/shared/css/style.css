@@ -17,7 +17,7 @@
   right: 20%;
   bottom: -26px;
   z-index: 3;
-  background: #64ffda !important;
+  background: #86D8FF !important;
   color: black !important;
 }
 
@@ -27,14 +27,14 @@
 
 
 .android-logo-image {
-  height: 28px;
-  width: 140px;
+  height: 32px;
+  width: 32px;
 }
 
 
 .android-header {
   overflow: visible;
-  background-color: white;
+  background-color: whitesmoke;
 }
 
   .android-header .material-icons {
@@ -87,7 +87,7 @@
   }
 
     .android-navigation .mdl-navigation__link:hover {
-      border-bottom: 4px solid #8bc34a;
+      border-bottom: 4px solid ##678FD8;
     }
 
   .android-search-box {
@@ -121,12 +121,12 @@
   }
 
   .android-drawer span.mdl-navigation__link.mdl-navigation__link {
-    color: #8bc34a;
+    color: #7AA8FB;
   }
 
   .android-drawer .mdl-layout-title {
     position: relative;
-    background: #6ab344;
+    background: #7AA8FB;
     height: 160px;
   }
 
@@ -137,7 +137,7 @@
 
 .android-be-together-section {
   position: relative;
-  height: 800px;
+  height: 650px;
   width: auto;
   background-color: #f3f3f3;
   background: url('app/assets/images/slide01.jpg') center 30% no-repeat;
@@ -153,7 +153,6 @@
 
 .android-slogan {
   font-size: 60px;
-  padding-top: 160px;
 }
 
 .android-sub-slogan {
@@ -173,6 +172,7 @@
   }
 
 .android-screen-section {
+  background:#37474f;
   position: relative;
   padding-top: 60px;
   padding-bottom: 80px;
@@ -269,7 +269,7 @@
   position: relative;
   background: url('app/assets/images/wear.png') center top no-repeat;
   background-size: cover;
-  height: 800px;
+  height: 240px;
 }
 
 .android-wear-band {
@@ -282,7 +282,7 @@
 
 .android-wear-band-text {
   max-width: 800px;
-  margin-left: 25%;
+  margin-left: 10%;
   padding: 24px;
   text-align: left;
   color: white;
@@ -294,7 +294,7 @@
 
 .android-link {
   text-decoration: none;
-  color: #8bc34a !important;
+  color: #7AA8FB !important;
 }
 
   .android-link:hover {
@@ -309,7 +309,7 @@
 
 .android-alt-link {
   text-decoration: none;
-  color: #64ffda !important;
+  color: #86D8FF !important;
   font-size: 16px;
 }
 
@@ -399,7 +399,7 @@
 }
 
   .android-footer a:hover {
-    color: #8bc34a;
+    color: #7AA8FB;
   }
 
   .android-footer .mdl-mega-footer--top-section::after {
@@ -442,7 +442,7 @@
   .android-mobile-title {
     display: block !important;
     position: absolute;
-    left: calc(50% - 70px);
+    left: calc(50% - 18px);
     top: 12px;
     transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -509,4 +509,8 @@
 /* Custom Override */
 div {
   font-family: "Roboto","Helvetica","Arial",sans-serif;
+}
+
+.mdl-layout__header--waterfall.is-casting-shadow {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(206, 206, 206, 0.2),0 1px 5px 0 rgba(208, 208, 208, 0.12);
 }

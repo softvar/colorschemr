@@ -22,3 +22,7 @@
 .mdl-switch__label {
 	font-size: 14px;
 }
+
+.mdl-typography--display-1, .mdl-typography--display-1-color-contrast {
+	font-size: 30px !important;
+}
