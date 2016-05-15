@@ -11,11 +11,13 @@ var webpackConfig = {
   },
 
   output: {
-    path: './dist',
+    path: './src/prod',
   },
 
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({ name: ['app-config', 'vendor', 'polyfills'], minChunks: Infinity }),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin()
   ],
 
   module: {
