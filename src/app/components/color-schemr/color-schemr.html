@@ -1,8 +1,61 @@
 <app-header></app-header>
-
-<div class="container" style="width: 100%;">
+<div class="width: 100%;">
     <div style="overflow:hidden; float: left;" [ngStyle]="{ 'width': showPreviewMode ? '75%' : '100%' }">
-        <div style="height: 650px;" (window:keypress)="eventHandler($event)">
+        <div style="height: 585px;" (window:keypress)="eventHandler($event)">
+            <div class="mdl-grid global-settings-bar">
+                <div class="mdl-cell mdl-cell--1-col" style="padding: 4px;">
+                    <div style="cursor: pointer;" (click)="toggleStripsLock()">
+                        <i id="global-lock-guide" class="material-icons" style="vertical-align: middle;">{{ !allStrips.areLocked ? 'lock_open' : 'lock' }}</i>
+                        <span class="mdl-tooltip inline" for="global-lock-guide">Click to {{ allStrips.areLocked ? ' unlock' : ' lock' }} all strips</span>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--4-col">
+                    <div class="mdl-grid" style="padding: 0;">
+                        <div class="mdl-cell mdl-cell--2-col">
+                            <i class="material-icons" id="rgb-selection-guide" style="color: #777;" tabindex="0">info</i>
+                            <span class="mdl-tooltip inline" for="rgb-selection-guide">Select RGB components to get colors in that range</span>
+                        </div>
+                        <div class="mdl-cell mdl-cell--3-col">
+                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-red" style="text-align: left;">
+                                <input type="checkbox" id="checkbox-red" class="mdl-checkbox__input" checked [(ngModel)]="allStrips.isRed" (ngModelChange)="toggleStripsRGBComponents()">
+                                <span>Red</span>
+                            </label>
+                        </div>
+                        <div class="mdl-cell mdl-cell--3-col">
+                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-green" style="text-align: left;">
+                                <input type="checkbox" id="checkbox-green" class="mdl-checkbox__input" checked [(ngModel)]="allStrips.isGreen" (ngModelChange)="toggleStripsRGBComponents()">
+                                <span>Green</span>
+                            </label>
+                        </div>
+                        <div class="mdl-cell mdl-cell--3-col">
+                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-blue" style="text-align: left;">
+                                <input type="checkbox" id="checkbox-blue" class="mdl-checkbox__input" checked [(ngModel)]="allStrips.isBlue" (ngModelChange)="toggleStripsRGBComponents()">
+                                <span>Blue</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--4-col" style="padding: 4px;">
+                    <strong>Hit Spacebar to generate colors</strong>
+                </div>
+                <div class="mdl-cell mdl-cell--3-col" style="padding: 4px;">
+                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="disco-switch">
+                        <input #discoSwitcher type="checkbox" id="disco-switch" class="mdl-switch__input" (change)="toggleDiscoMode(discoSwitcher.checked)">
+                        <span class="mdl-switch__label">Disco Mode</span>
+                    </label>
+
+                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="piano-switch">
+                        <input #pianoSwitcher type="checkbox" id="piano-switch" class="mdl-switch__input" (change)="togglePianoMode(pianoSwitcher.checked)">
+                        <span class="mdl-switch__label">Piano Mode</span>
+                    </label>
+
+                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="preview-switch">
+                        <input #schemerPreview type="checkbox" id="preview-switch" class="mdl-switch__input"
+                               (change)="showPreviewMode = schemerPreview.checked;">
+                        <span class="mdl-switch__label">Preview Mode</span>
+                    </label>
+                </div>
+            </div>
             <div class="side-menus" style="float: left">
                 <i id="add-front" class="material-icons plus-icon" (click)="addStrip($event, true);">add</i>
                 <div class="mdl-tooltip" for="add-front">Add to front</div>
@@ -18,7 +71,7 @@
                      [ngClass]="{'close--left': i === 0, 'close--right': i !== 0}"
                      [hidden]="!colorStrip.isHovered || colorStrips.length === 1"
                      (click)="removeStrip($event, i, colorStrip)">
-                    <i id="remove-strip" class="material-icons" style="font-size: 20px">close</i>
+                    <i id="remove-strip" class="material-icons" style="font-size: 20px" [ngStyle]="{ 'color' : colorStrip.fontColor }">close</i>
                 </div>
 
                 <div class="absolute" style="bottom: 320px; width: 100%;"
@@ -76,19 +129,18 @@
                 </div>
             </div>
             <div class="side-menus" style="float: right">
-                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1" style="margin-left: 10px;">
-                    <input #schemerPreview type="checkbox" id="switch-1" class="mdl-switch__input"
-                           (change)="showPreviewMode = schemerPreview.checked;">
-                    <span class="mdl-switch__label"></span>
-                </label>
-
                 <i id="add-last" class="material-icons plus-icon" (click)="addStrip($event);">add</i>
                 <div class="mdl-tooltip" for="add-last">Add to last</div>
             </div>
         </div>
     </div>
-    <div style="overflow:hidden; max-height: 650px;">
+    <div style="overflow:hidden; max-height: 640px;">
         <schemr-previewer [colorStrips]="colorStrips | transform: colorStrips" *ngIf="showPreviewMode"></schemr-previewer>
     </div>
+</div>
+
+<div class="text--center  quote-area" *ngIf="quote && quote.content">
+    <i [innerHTML]="quote.content | escapehtmltags"></i>
+    <i><strong> - {{ quote.title || 'Anonymous' }}</strong></i>
 </div>
 <app-footer></app-footer>

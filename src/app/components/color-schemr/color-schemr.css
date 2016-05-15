@@ -36,3 +36,19 @@
 * {
 	transition: all .1s ease-in-out;
 }
+
+.global-settings-bar {
+	padding: 0;
+	width: 90%;
+	background: #F7F7F7;
+	margin-bottom: 5px;
+	border: 0.1px solid #CECCCC;
+	border-radius: 5px;
+}
+
+.quote-area {
+	width: 90%;
+	margin-left: 5%;
+	overflow: scroll;
+	max-height: 33px;
+}

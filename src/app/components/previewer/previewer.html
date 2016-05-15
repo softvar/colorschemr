@@ -1,5 +1,5 @@
 <div *ngFor="let color of colorStrips; let i = index;">
-    <div [ngStyle]="{ 'background-color': color.primaryColor.rgbColor, 'height': (650 / colorStrips.length + 'px') }"
+    <div [ngStyle]="{ 'background-color': color.primaryColor.rgbColor, 'height': (640 / colorStrips.length + 'px') }"
          style="width: 300px; position: relative;">
         <button class="mdl-button mdl-js-button mdl-button--fab"
                 [ngStyle]="{ 'background-color': color.secondaryColor.rgbColor }"

@@ -2,6 +2,7 @@ body {
 	padding: 0;
 	border: none;
 	background: none;
+	color: #757575 !important
 }
 
 /***********************
@@ -88,6 +89,12 @@ body {
 }
 .relative {
 	position: relative;
+}
+.block {
+	display: block;
+}
+.inline {
+	display: inline-block;
 }
 
 
