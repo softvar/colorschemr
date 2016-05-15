@@ -1,6 +1,6 @@
 import {
 LocationStrategy,
-PathLocationStrategy
+HashLocationStrategy
 } from '@angular/common'; // PathLocationStrategy - no longer legacy `#` in paths
 
 import { bootstrap } from '@angular/platform-browser-dynamic';
@@ -15,6 +15,6 @@ import { MainApp } from './app/main';
 bootstrap(MainApp, [
   HTTP_PROVIDERS,
   ROUTER_PROVIDERS,
-  provide(LocationStrategy, {useClass: PathLocationStrategy})
+  provide(LocationStrategy, {useClass: HashLocationStrategy})
 ])
 .catch(err => console.error(err));
