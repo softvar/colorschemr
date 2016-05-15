@@ -36,10 +36,7 @@ export class StripService {
   }
 
   updateOpacity (strip: StripModel, index: number) {
-    // console.log(strip.opacity)
-    this.strips[index].updateColor();
-    // this.strips[index].opacity = Math.round(strip.opacity / 10);
-    // rgb to hex
+    this.strips[index].updateOpacity(strip);
   };
 
   flush () {

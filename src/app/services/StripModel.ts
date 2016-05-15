@@ -9,11 +9,13 @@ export class StripModel {
 
   color: String = '';
   rgbColor: String = '';
-  startColor: String = '#FFFFFF';
-  endColor: String = '#000000';
+  rgb: Array<number> = [];
   isLocked: Boolean = false;
   opacity: any = 10;
   fontColor: string = '';
+  isRed: Boolean = true;
+  isGreen: Boolean = true;
+  isBlue: Boolean = true;
 
   constructor(public index: Number = 0) {
     // not injecting it in constructor since it would have to be passed
@@ -22,40 +24,43 @@ export class StripModel {
     this.stripService = new StripService();
 
     this.color = this.colorService.getRandomHexCode();
-    let rgbObject = this.colorService.hexToRgb(this.color);
-    this.rgbColor = `rgba(${rgbObject.r}, ${rgbObject.g}, ${rgbObject.b}, 1)`;
-    this.setFontColor(rgbObject);
+    let rgb = this.colorService.hexToRgb(this.color);
+    this.rgbColor = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, 1)`;
+    this.rgb = rgb;
+    this.setFontColor(rgb);
   };
 
   updateColor () {
     if (this.isLocked) { return; }
-    let hexColor = this.colorService.getRandomHexCode();
-    let rgbObject;
+    let hexColor; // = this.colorService.getRandomHexCode();
 
-    rgbObject = this.colorService.hexToRgb(this.color);
-    this.rgbColor = `rgba(
-      ${rgbObject.r},
-      ${rgbObject.g},
-      ${rgbObject.b},
-      ${((this.opacity / 10) || 1)})`;
-
-    if (parseInt(this.opacity, 10) !== 10) {
-      hexColor = this.colorService.rgbToHex(rgbObject.r, rgbObject.g, rgbObject.b);
-    }
-
+    let rgb = this.colorService.getFormattedRGB(this);
+    this.rgbColor = rgb.formatted;
+    this.rgb = rgb.raw;
+    hexColor = this.colorService.rgbToHex(
+      rgb.raw[0],
+      rgb.raw[1],
+      rgb.raw[2]
+    );
+    // if (parseInt(this.opacity, 10) !== 10) {}
     this.color = hexColor;
-    this.setFontColor(rgbObject);
+    this.setFontColor(rgb.raw);
+  };
+
+  updateOpacity (strip) {
+    let rgb = strip.rgb;
+    strip.rgbColor = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${strip.opacity / 10 || 1})`;
   };
 
   init () {};
 
-  private setFontColor(rgbObject) {
-    let fontWeight = 1 - ( 0.299 * rgbObject.r + 0.587 * rgbObject.g + 0.114 * rgbObject.b) / 255;
+  private setFontColor(rgb) {
+    let fontWeight = 1 - ( 0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2]) / 255;
 
     if (fontWeight < 0.5) {
       this.fontColor = '#20172C';
     } else {
-      this.fontColor = '#FFF';
+      this.fontColor = '#FFFFFF';
     }
-  }
+  };
 }

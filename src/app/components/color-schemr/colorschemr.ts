@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { NgStyle } from '@angular/common';
 
+import { MDL } from '../shared/mdl';
 import { Header } from '../shared/header';
 import { Footer } from '../shared/footer';
 
@@ -18,12 +19,11 @@ import { QuoteService } from '../../services/QuoteService';
     'app/components/color-schemr/color-schemr.css'
   ],
   providers: [ ColorService, StripService, QuoteService ],
-  directives: [ Header, Footer ],
+  directives: [ MDL, Header, Footer ],
   pipes: []
 })
 export class ColorSchemr {
-  rangeStartColor: Array<String> = [];
-  rangeEndColor: Array<String> = [];
+  rangeRGBColor: Array<Object> = [];
   colorStrips: Array<Object> = [];
   hash: string;
 
@@ -85,12 +85,11 @@ export class ColorSchemr {
     // ev.preventDefault();
     // ev.stopPropagation();
     this.stripService.updateOpacity(strip, index);
-  }
+  };
 
   getQuote() {
     this.quoteService.getQuote().subscribe(function (quote) {
       this.quote = quote;
     });
-  }
-
+  };
 }
