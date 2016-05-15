@@ -83,9 +83,9 @@ export class ColorSchemr {
     this.colorStrips.splice(index, 1);
   };
 
-  onOpacityChange(index, strip) {
-    // ev.preventDefault();
-    // ev.stopPropagation();
+  onOpacityChange(ev, index, strip) {
+    ev.preventDefault();
+    ev.stopPropagation();
     this.stripService.updateOpacity(strip, index);
   };
 
