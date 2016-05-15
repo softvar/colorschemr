@@ -41,6 +41,9 @@ export class ColorSchemr {
   currentQuoteIndex: number = 0;
   quote: Object = {};
 
+  isDiscoMode: boolean = false;
+  isPianoMode: boolean = false;
+
   constructor(
     public colorService: ColorService,
     public stripService: StripService,
@@ -121,6 +124,11 @@ export class ColorSchemr {
   }
 
   setCurrentQuote() {
+    if (this.isDiscoMode || this.isPianoMode) {
+      if (Object.keys(this.quote).length !== 0) {
+        return;
+      }
+    }
     if (this.quotes.length - this.currentQuoteIndex <= 5) {
       this.getQuote();
     } else {
@@ -139,6 +147,7 @@ export class ColorSchemr {
 
   pianoMode() {
     this.pianoModeInterval = setInterval(() => {
+      this.isPianoMode = true;
       this.eventHandler({
         keyCode: Math.floor(Math.random() * 10) + 48
       });
@@ -163,16 +172,20 @@ export class ColorSchemr {
   toggleDiscoMode(mode) {
     if (mode) {
       this.discoMode();
+      this.isDiscoMode = true;
     } else {
       clearInterval(this.discoModeInterval);
+      this.isDiscoMode = false;
     }
   }
 
   togglePianoMode(mode) {
     if (mode) {
       this.pianoMode();
+      this.isPianoMode = true;
     } else {
       clearInterval(this.pianoModeInterval);
+      this.isPianoMode = false;
     }
   }
 }
