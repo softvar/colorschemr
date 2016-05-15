@@ -1,81 +1,94 @@
 <app-header></app-header>
-<div style="height: 650px;" (window:keypress)="eventHandler($event)">
-    <div class="side-menus" style="float: left">
-        <i id="add-front" class="material-icons plus-icon" (click)="addStrip($event, true);">add</i>
-        <div class="mdl-tooltip" for="add-front">Add to front</div>
+
+<div class="container" style="width: 100%;">
+    <div style="overflow:hidden; float: left;" [ngStyle]="{ 'width': showPreviewMode ? '75%' : '100%' }">
+        <div style="height: 650px;" (window:keypress)="eventHandler($event)">
+            <div class="side-menus" style="float: left">
+                <i id="add-front" class="material-icons plus-icon" (click)="addStrip($event, true);">add</i>
+                <div class="mdl-tooltip" for="add-front">Add to front</div>
+            </div>
+            <div class="strip"
+                 *ngFor="let colorStrip of colorStrips; let i = index;"
+                 [ngStyle]="{ 'background': colorStrip.rgbColor, width: ((100 / colorStrips.length) - (10 / colorStrips.length )) + '%' }"
+                 (click)="onStripClick($event, i, colorStrip)"
+                 (mouseover)="colorStrip.isHovered = true;"
+                 (mouseout)="colorStrip.isHovered = false;">
+
+                <div class="absolute" style="top: 5px;"
+                     [ngClass]="{'close--left': i === 0, 'close--right': i !== 0}"
+                     [hidden]="!colorStrip.isHovered || colorStrips.length === 1"
+                     (click)="removeStrip($event, i, colorStrip)">
+                    <i id="remove-strip" class="material-icons" style="font-size: 20px">close</i>
+                </div>
+
+                <div class="absolute" style="bottom: 320px; width: 100%;"
+                     [hidden]="!colorStrip.isHovered">
+                    <input class="mdl-slider mdl-js-slider" type="range"
+                           min="1" max="10" value="10" steps="1" tabindex="0"
+                           [(ngModel)]="colorStrip.opacity"
+                           (ngModelChange)="onOpacityChange(i, colorStrip)">
+                </div>
+
+                <div style="bottom: 275px; width: 100%; font-size: 16px; text-transform: uppercase;"
+                     class="absolute" [ngStyle]="{ 'color' : colorStrip.fontColor }">
+                    {{ colorStrip.color }}
+                </div>
+                <div style="bottom: 225px; width: 100%; font-size: 16px;"
+                     class="absolute" [ngStyle]="{ 'color' : colorStrip.fontColor }">
+                    {{ colorStrip.rgbColor }}
+                </div>
+
+                <div style="bottom: 100px; width: 100%;"
+                     class="absolute"
+                     [hidden]="!colorStrip.isHovered && !colorStrip.isLocked">
+                    <i class="material-icons" [hidden]="colorStrip.isLocked" [ngStyle]="{ 'color' : colorStrip.fontColor }">lock_open</i>
+                    <i class="material-icons" [hidden]="!colorStrip.isLocked" [ngStyle]="{ 'color' : colorStrip.fontColor }">lock</i>
+                    <div [ngStyle]="{ 'color' : colorStrip.fontColor }">
+                        <i>Click to {{ colorStrip.isLocked ? ' unlock' : ' lock' }}</i>
+                    </div>
+                </div>
+
+                <div mdl class="absolute" style="top: 100px;width: 100%;" [hidden]="!colorStrip.isHovered">
+                    <div class="mdl-grid" style="padding: 0;">
+                        <div class="mdl-cell mdl-cell--3-col">
+                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" [attr.for]="'checkbox-red-' + i" style="text-align: left;">
+                                <input type="checkbox" id="checkbox-red-{{ i }}" class="mdl-checkbox__input" checked [(ngModel)]="colorStrip.isRed">
+                                <span [ngStyle]="{ 'color' : colorStrip.fontColor }">Red</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="mdl-grid" style="padding: 0;">
+                        <div class="mdl-cell mdl-cell--3-col">
+                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" [attr.for]="'checkbox-green-' + i" style="text-align: left;">
+                                <input type="checkbox" id="checkbox-green-{{ i }}" class="mdl-checkbox__input" checked [(ngModel)]="colorStrip.isGreen">
+                                <span [ngStyle]="{ 'color' : colorStrip.fontColor }">Green</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="mdl-grid" style="padding: 0;">
+                        <div class="mdl-cell mdl-cell--3-col">
+                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" [attr.for]="'checkbox-blue-' + i" style="text-align: left;">
+                                <input type="checkbox" id="checkbox-blue-{{ i }}" class="mdl-checkbox__input" checked [(ngModel)]="colorStrip.isBlue">
+                                <span [ngStyle]="{ 'color' : colorStrip.fontColor }">Blue</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="side-menus" style="float: right">
+                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
+                    <input #schemerPreview type="checkbox" id="switch-1" class="mdl-switch__input"
+                           (change)="showPreviewMode = schemerPreview.checked;">
+                    <span class="mdl-switch__label"></span>
+                </label>
+
+                <i id="add-last" class="material-icons plus-icon" (click)="addStrip($event);">add</i>
+                <div class="mdl-tooltip" for="add-last">Add to last</div>
+            </div>
+        </div>
     </div>
-    <div class="strip"
-        *ngFor="let colorStrip of colorStrips; let i = index;"
-        [ngStyle]="{ 'background': colorStrip.rgbColor, width: ((100 / colorStrips.length) - (10 / colorStrips.length )) + '%' }"
-        (click)="onStripClick($event, i, colorStrip)"
-        (mouseover)="colorStrip.isHovered = true;"
-        (mouseout)="colorStrip.isHovered = false;">
-
-        <div class="absolute" style="top: 5px;"
-            [ngClass]="{'close--left': i === 0, 'close--right': i !== 0}"
-            [hidden]="!colorStrip.isHovered || colorStrips.length === 1"
-            (click)="removeStrip($event, i, colorStrip)">
-            <i id="remove-strip" class="material-icons" style="font-size: 20px">close</i>
-        </div>
-
-        <div class="absolute" style="bottom: 320px; width: 100%;"
-            [hidden]="!colorStrip.isHovered">
-            <input class="mdl-slider mdl-js-slider" type="range"
-                min="1" max="10" value="10" steps="1" tabindex="0"
-                [(ngModel)]="colorStrip.opacity"
-                (ngModelChange)="onOpacityChange(i, colorStrip)">
-        </div>
-
-        <div style="bottom: 275px; width: 100%; font-size: 16px; text-transform: uppercase;"
-            class="absolute" [ngStyle]="{ 'color' : colorStrip.fontColor }">
-            {{ colorStrip.color }}
-        </div>
-        <div style="bottom: 225px; width: 100%; font-size: 16px;"
-            class="absolute" [ngStyle]="{ 'color' : colorStrip.fontColor }">
-            {{ colorStrip.rgbColor }}
-        </div>
-
-        <div style="bottom: 100px; width: 100%;"
-            class="absolute"
-            [hidden]="!colorStrip.isHovered && !colorStrip.isLocked">
-            <i class="material-icons" [hidden]="colorStrip.isLocked" [ngStyle]="{ 'color' : colorStrip.fontColor }">lock_open</i>
-            <i class="material-icons" [hidden]="!colorStrip.isLocked" [ngStyle]="{ 'color' : colorStrip.fontColor }">lock</i>
-            <div [ngStyle]="{ 'color' : colorStrip.fontColor }">
-                <i>Click to {{ colorStrip.isLocked ? ' unlock' : ' lock' }}</i>
-            </div>
-        </div>
-
-        <div mdl class="absolute" style="top: 100px;width: 100%;" [hidden]="!colorStrip.isHovered">
-            <div class="mdl-grid" style="padding: 0;">
-              <div class="mdl-cell mdl-cell--3-col">
-                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" [attr.for]="'checkbox-red-' + i" style="text-align: left;">
-                  <input type="checkbox" id="checkbox-red-{{ i }}" class="mdl-checkbox__input" checked [(ngModel)]="colorStrip.isRed">
-                  <span [ngStyle]="{ 'color' : colorStrip.fontColor }">Red</span>
-                </label>
-              </div>
-            </div>
-            <div class="mdl-grid" style="padding: 0;">
-              <div class="mdl-cell mdl-cell--3-col">
-                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" [attr.for]="'checkbox-green-' + i" style="text-align: left;">
-                  <input type="checkbox" id="checkbox-green-{{ i }}" class="mdl-checkbox__input" checked [(ngModel)]="colorStrip.isGreen">
-                  <span [ngStyle]="{ 'color' : colorStrip.fontColor }">Green</span>
-                </label>
-              </div>
-            </div>
-            <div class="mdl-grid" style="padding: 0;">
-              <div class="mdl-cell mdl-cell--3-col">
-                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" [attr.for]="'checkbox-blue-' + i" style="text-align: left;">
-                  <input type="checkbox" id="checkbox-blue-{{ i }}" class="mdl-checkbox__input" checked [(ngModel)]="colorStrip.isBlue">
-                  <span [ngStyle]="{ 'color' : colorStrip.fontColor }">Blue</span>
-                </label>
-              </div>
-            </div>
-        </div>
-    </div>
-    <div class="side-menus" style="float: right">
-        <i id="add-last" class="material-icons plus-icon" (click)="addStrip($event);">add</i>
-        <div class="mdl-tooltip" for="add-last">Add to last</div>
+    <div style="overflow:hidden; max-height: 650px;">
+        <schemr-previewer [colorStrips]="colorStrips | transform: colorStrips" *ngIf="showPreviewMode"></schemr-previewer>
     </div>
 </div>
 <app-footer></app-footer>
-<schemr-previewer [colorStrips]="colorStrips"></schemr-previewer>

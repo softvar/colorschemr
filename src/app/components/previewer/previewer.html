@@ -1,5 +1,9 @@
 <div *ngFor="let color of colorStrips; let i = index;">
-    <h1 [ngStyle]="{ 'color': color.rgbColor }">
-        Angular Attack
-    </h1>
+    <div [ngStyle]="{ 'background-color': color.primaryColor.rgbColor, 'height': (100 / colorStrips.length + '%') }"
+         style="width: 300px;">
+        <button class="mdl-button mdl-js-button mdl-button--fab"
+                [ngStyle]="{ 'background-color': color.secondaryColor.rgbColor }">
+            <i class="material-icons">add</i>
+        </button>
+    </div>
 </div>

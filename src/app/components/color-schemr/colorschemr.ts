@@ -11,6 +11,7 @@ import { StripService } from '../../services/StripService';
 import { Defaults } from '../../constants/Defaults';
 import { QuoteService } from '../../services/QuoteService';
 import { SchemrPreviewer } from '../previewer/Previewer';
+import { PreviewPipe } from '../../pipes/PreviewPipe';
 
 @Component({
   selector: 'app',
@@ -21,7 +22,7 @@ import { SchemrPreviewer } from '../previewer/Previewer';
   ],
   providers: [ ColorService, StripService, QuoteService ],
   directives: [ MDL, Header, Footer, SchemrPreviewer ],
-  pipes: []
+  pipes: [ PreviewPipe ]
 })
 export class ColorSchemr {
   rangeRGBColor: Array<Object> = [];
