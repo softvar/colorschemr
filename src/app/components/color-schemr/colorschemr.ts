@@ -10,6 +10,8 @@ import { StripService } from '../../services/StripService';
 
 import { Defaults } from '../../constants/Defaults';
 import { QuoteService } from '../../services/QuoteService';
+import { SchemrPreviewer } from '../previewer/Previewer';
+import { PreviewPipe } from '../../pipes/PreviewPipe';
 
 import { EscapeHtmlTagsPipe } from '../../pipes/EscapeHtmlTagsPipe';
 @Component({
@@ -20,8 +22,8 @@ import { EscapeHtmlTagsPipe } from '../../pipes/EscapeHtmlTagsPipe';
     'app/components/color-schemr/color-schemr.css'
   ],
   providers: [ ColorService, StripService, QuoteService ],
-  directives: [ MDL, Header, Footer ],
-  pipes: [ EscapeHtmlTagsPipe ]
+  directives: [ MDL, Header, Footer, SchemrPreviewer ],
+  pipes: [ EscapeHtmlTagsPipe, PreviewPipe ]
 })
 export class ColorSchemr {
   rangeRGBColor: Array<Object> = [];
