@@ -140,7 +140,6 @@
   height: 650px;
   width: auto;
   background-color: #f3f3f3;
-  background: url('app/assets/images/slide01.jpg') center 30% no-repeat;
   background-size: cover;
 }
 
@@ -267,9 +266,8 @@
 
 .android-wear-section {
   position: relative;
-  background: url('app/assets/images/wear.png') center top no-repeat;
   background-size: cover;
-  height: 240px;
+  height: 650px;
 }
 
 .android-wear-band {
@@ -338,7 +336,6 @@
   }
 
 .android-customized-section-image {
-  background: url('app/assets/images/devices.jpg') center top no-repeat;
   background-size: cover;
   height: 400px;
 }
@@ -431,6 +428,12 @@
 
 /**** Mobile layout ****/
 @media (max-width: 900px) {
+  .android-wear-section {
+    position: relative;
+    background-size: cover;
+    height: 980px;
+  }
+
   .android-navigation-container {
     display: none;
   }
