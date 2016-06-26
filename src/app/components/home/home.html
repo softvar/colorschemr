@@ -1,17 +1,9 @@
 <!-- <loader msg="loading passed message...yay..checked..."></loader> -->
 <div mdl class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <div class="android-header mdl-layout__header mdl-layout__header--waterfall">
-    <div class="mdl-layout__header-row" style="background: whitesmoke">
+    <div class="mdl-layout__header-row" style="background: #fafafa">
       <!-- Add spacer, to align navigation to the right in desktop -->
       <div class="android-header-spacer mdl-layout-spacer"></div>
-     <!--  <div class="android-search-box mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
-        <label class="mdl-button mdl-js-button mdl-button--icon" for="search-field">
-          <i class="material-icons">search</i>
-        </label>
-        <div class="mdl-textfield__expandable-holder">
-          <input class="mdl-textfield__input" type="text" id="search-field">
-        </div>
-      </div> -->
       <!-- Navigation -->
       <div class="android-navigation-container">
         <nav class="android-navigation mdl-navigation">
@@ -22,15 +14,6 @@
       <span class="android-mobile-title mdl-layout-title">
         <img class="android-logo-image" src="app/assets/images/cs-64.png">
       </span>
-      <!-- <button class="android-more-button mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button">
-        <i class="material-icons">more_vert</i>
-      </button>
-      <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
-        <li class="mdl-menu__item">Horizontal - One</li>
-        <li class="mdl-menu__item">Horizontal - Two</li>
-        <li class="mdl-menu__item">Horizontal - Three</li>
-        <li disabled class="mdl-menu__item">Vertical - One</li>
-      </ul> -->
     </div>
   </div>
   <div class="android-drawer mdl-layout__drawer">
@@ -43,30 +26,33 @@
       <a class="mdl-navigation__link mdl-typography--text-uppercase" [routerLink]=" ['/About'] ">About</a>
 
       <div class="android-drawer-separator"></div>
-      <span href="" style="color: #7AA8FB; padding: 5px 40px; font-size: 16px;">Share</span>
-      <div class="android-drawer-separator"></div>
 
-      <a class="mdl-navigation__link" href="">Twitter</a>
-      <a class="mdl-navigation__link" href="">Facebook</a>
+      <iframe
+        allowtransparency="true"
+        scrolling="no"
+        frameborder="0"
+        src="https://buttons.github.io/buttons.html#href=https%3A%2F%2Fgithub.com%2Fsoftvar%2Fcolorschemr&amp;text=Star&amp;data.count.api=%2Frepos%2Fsoftvar%2Fcolorschemr%23stargazers_count&amp;data.count.href=%2Fsoftvar%2Fcolorschemr%2Fstargazers&amp;data.count.aria.label=%23%20stargazers%20on%20GitHub&amp;data.style=mega&amp;data.icon=octicon-star&amp;aria.label=Star%20softvar%2Fcolorschemr%20on%20GitHub"
+        style="margin: 10px 40px; width: 110px; height: 28px; border: none;"></iframe>
 
-      <div class="android-drawer-separator"></div>
-      <span href="" style="color: #7AA8FB; padding: 5px 40px; font-size: 16px;">Find us on</span>
-      <div class="android-drawer-separator"></div>
+      <iframe
+        src="https://platform.twitter.com/widgets/tweet_button.html?size=l&url=http://colorschemr.com&via=s0ftvar&text=Generate color palettes one will fall in love with&hashtags=ColorSchemr"
+        width="80"
+        height="28"
+        title="Twitter Tweet Button"
+        style="margin: 10px 40px; border: 0; overflow: hidden;">
+      </iframe>
 
-      <!-- <a class="mdl-navigation__link" href="">Facebook</a>
-      <a class="mdl-navigation__link" href="">Twitter</a>
-      <a class="mdl-navigation__link" href="">Google+</a> -->
-      <a class="mdl-navigation__link" href="https://github.com/rumblex/angularattack2016-colorschemr">Github</a>
+      <span class="text--center  absolute" style="bottom: 10px;width: 100%;">Copyright <i class="fa fa-copyright"></i> 2016</span>
     </nav>
   </div>
 
   <div class="android-content mdl-layout__content">
-    <a name="top"></a>
+    <a id="top"></a>
     <div class="android-be-together-section mdl-typography--text-center">
       <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--12-col">
-          <img src="app/assets/images/cs-128.png" style="padding-top: 160px;" />
-          <div class="logo-font android-slogan margin-top--20" style="color: #7AA8FB">Color Schemr</div>
+          <img src="app/assets/images/cs-128.png" />
+          <div class="logo-font android-slogan margin-top--20  header-title" style="color: #7AA8FB; text-decoration: underline; cursor: pointer;" (click)="goToApp()">Color Schemr</div>
           <div class="logo-font android-sub-slogan" style="color: #ABABAB">Generate your always aspiring Color Scheme with jaw-dropping feature list</div>
         </div>
       </div>
@@ -85,7 +71,6 @@
           <p class="mdl-typography--headline mdl-typography--font-thin">
             Focus more on product and let Color Schemr decides your theme.
             <br />
-            It works best on <i>http</i> only since it uses Quotes API which is on <i>http</i>
           </p>
           <p>
             <a class="mdl-typography--font-regular mdl-typography--text-uppercase android-alt-link" href="#features">
@@ -105,23 +90,23 @@
       </div>
 
       <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--3-col">
+        <div class="mdl-cell mdl-cell--3-col  mdl-cell mdl-cell--2-col-phone  mdl-cell mdl-cell--2-col-tablet">
           <i class="fa fa-barcode fa-4x" aria-hidden="true" style="color: #7AA8FB;"></i>
           <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Generate Palettes</div>
           <div>Hit spacebar to generate new palettes</div>
         </div>
-        <div class="mdl-cell mdl-cell--3-col">
+        <div class="mdl-cell mdl-cell--3-col  mdl-cell mdl-cell--2-col-phone  mdl-cell mdl-cell--2-col-tablet">
           <i class="fa fa-plus fa-4x" aria-hidden="true" style="color: #7AA8FB;"></i>
           <i class="fa fa-close fa-4x" aria-hidden="true" style="color: #7AA8FB;"></i>
           <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Add / Remove Strips</div>
           <div>Add to front / last (Upto a maximum of 10 strips), remove any strip</div>
         </div>
-        <div class="mdl-cell mdl-cell--3-col">
+        <div class="mdl-cell mdl-cell--3-col  mdl-cell mdl-cell--2-col-phone  mdl-cell mdl-cell--2-col-tablet">
           <i class="fa fa-eyedropper fa-4x" aria-hidden="true" style="color: #7AA8FB;"></i>
           <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Color Range</div>
           <div>Get Colors from a specified range of [R, G, B]. Just select your preference</div>
         </div>
-        <div class="mdl-cell mdl-cell--3-col">
+        <div class="mdl-cell mdl-cell--3-col  mdl-cell mdl-cell--2-col-phone  mdl-cell mdl-cell--2-col-tablet">
           <i class="fa fa-lock fa-4x" aria-hidden="true" style="color: #7AA8FB;"></i>
           <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Lock / Unlock</div>
           <div>Control whether hitting spacebar should update strip's color</div>
@@ -129,22 +114,22 @@
       </div>
       <!-- 2 row -->
       <div class="mdl-grid" style="margin-top: 50px;">
-        <div class="mdl-cell mdl-cell--3-col">
+        <div class="mdl-cell mdl-cell--3-col  mdl-cell mdl-cell--2-col-phone  mdl-cell mdl-cell--2-col-tablet">
           <i class="fa fa-code fa-4x" aria-hidden="true" style="color: #7AA8FB;"></i>
           <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Color Codes</div>
           <div>Each strip color in Hex and RGB code</div>
         </div>
-        <div class="mdl-cell mdl-cell--3-col">
+        <div class="mdl-cell mdl-cell--3-col  mdl-cell mdl-cell--2-col-phone  mdl-cell mdl-cell--2-col-tablet">
           <i class="fa fa-adjust fa-4x" aria-hidden="true" style="color: #7AA8FB;"></i>
           <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Opacity</div>
           <div>Adjust strip opacity by dragging the slider</div>
         </div>
-        <div class="mdl-cell mdl-cell--3-col">
+        <div class="mdl-cell mdl-cell--3-col  mdl-cell mdl-cell--2-col-phone  mdl-cell mdl-cell--2-col-tablet">
           <i class="fa fa-random fa-4x" aria-hidden="true" style="color: #7AA8FB;"></i>
           <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Random Quote</div>
           <div>A color quote with each new palette generation</div>
         </div>
-        <div class="mdl-cell mdl-cell--3-col">
+        <div class="mdl-cell mdl-cell--3-col  mdl-cell mdl-cell--2-col-phone  mdl-cell mdl-cell--2-col-tablet">
           <i class="fa fa-cog fa-4x" aria-hidden="true" style="color: #7AA8FB;"></i>
           <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Global Settings</div>
           <div>Lock / Unlock / Adjust Color Range for all Strips</div>
@@ -153,42 +138,51 @@
 
       <!-- 3 row -->
       <div class="mdl-grid" style="margin-top: 50px;">
-        <div class="mdl-cell mdl-cell--3-col">
-          <i class="fa fa-keyboard-o fa-4x" aria-hidden="true" style="color: #7AA8FB;"></i>
-          <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Key bindings</div>
-          <div>Change particular strip color by pressing number keys (0-9). 1 for first strip...0 for tenth</div>
-        </div>
-        <div class="mdl-cell mdl-cell--3-col">
+        <div class="mdl-cell mdl-cell--3-col  mdl-cell mdl-cell--2-col-phone  mdl-cell mdl-cell--2-col-tablet">
           <i class="fa fa-repeat fa-4x" aria-hidden="true" style="color: #7AA8FB;"></i>
           <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Disco Mode</div>
           <div>Automatic palette generation in a loop</div>
         </div>
-        <div class="mdl-cell mdl-cell--3-col">
+        <div class="mdl-cell mdl-cell--3-col  mdl-cell mdl-cell--2-col-phone  mdl-cell mdl-cell--2-col-tablet">
           <i class="fa fa-signal fa-4x" aria-hidden="true" style="color: #7AA8FB;"></i>
           <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Piano Mode</div>
           <div>Automatic random strip changes color in a loop</div>
         </div>
-        <div class="mdl-cell mdl-cell--3-col">
+        <div class="mdl-cell mdl-cell--3-col  mdl-cell mdl-cell--2-col-phone  mdl-cell mdl-cell--2-col-tablet">
           <i class="fa fa-eye fa-4x" aria-hidden="true" style="color: #7AA8FB;"></i>
           <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Preview Mode</div>
           <div>Preview how colors would look on a minimalistic template</div>
         </div>
+        <div class="mdl-cell mdl-cell--3-col  mdl-cell mdl-cell--2-col-phone  mdl-cell mdl-cell--2-col-tablet">
+          <i class="fa fa-columns fa-4x" aria-hidden="true" style="color: #7AA8FB;"></i>
+          <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Gradient Mode</div>
+          <div>Blend colors to view it as gradient strip (works best with two colors)</div>
+        </div>
+
       </div>
 
       <!-- 5 row -->
       <div class="mdl-grid" style="margin-top: 50px;">
-        <div class="mdl-cell mdl-cell--3-col"></div>
-        <div class="mdl-cell mdl-cell--3-col">
+        <div class="mdl-cell mdl-cell--3-col  mdl-cell mdl-cell--2-col-phone  mdl-cell mdl-cell--2-col-tablet">
+          <i class="fa fa-keyboard-o fa-4x" aria-hidden="true" style="color: #7AA8FB;"></i>
+          <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Key bindings</div>
+          <div>Change particular strip color by pressing number keys (0-9). 1 for first strip...0 for tenth</div>
+        </div>
+        <div class="mdl-cell mdl-cell--3-col  mdl-cell mdl-cell--2-col-phone  mdl-cell mdl-cell--3-col-tablet">
           <i class="fa fa-adjust fa-4x" aria-hidden="true" style="color: #7AA8FB;"></i>
           <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Text Adjustment</div>
           <div>Strip's font-color auto-adjusted based on strip's color</div>
         </div>
-        <div class="mdl-cell mdl-cell--3-col">
+        <div class="mdl-cell mdl-cell--3-col  mdl-cell mdl-cell--2-col-phone  mdl-cell mdl-cell--3-col-tablet">
           <i class="fa fa-align-center fa-4x" aria-hidden="true" style="color: #7AA8FB;"></i>
           <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Responsive</div>
           <div>Cross platform responsive app</div>
         </div>
-        <div class="mdl-cell mdl-cell--3-col"></div>
+        <div class="mdl-cell mdl-cell--3-col  mdl-cell mdl-cell--2-col-phone  mdl-cell mdl-cell--2-col-tablet">
+          <i class="fa fa-code fa-4x" aria-hidden="true" style="color: #7AA8FB;"></i>
+          <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Open Source</div>
+          <div>Checkout the code written with Angular2</div>
+        </div>
       </div>
 
       <!-- <div class="android-customized-section-image"></div> -->
@@ -205,6 +199,20 @@
       </div>
 
       <div class="mdl-mega-footer--middle-section">
+        <iframe
+          allowtransparency="true"
+          scrolling="no"
+          frameborder="0"
+          src="https://buttons.github.io/buttons.html#href=https%3A%2F%2Fgithub.com%2Fsoftvar%2Fcolorschemr&amp;text=Star&amp;data.count.api=%2Frepos%2Fsoftvar%2Fcolorschemr%23stargazers_count&amp;data.count.href=%2Fsoftvar%2Fcolorschemr%2Fstargazers&amp;data.count.aria.label=%23%20stargazers%20on%20GitHub&amp;data.style=mega&amp;data.icon=octicon-star&amp;aria.label=Star%20softvar%2Fcolorschemr%20on%20GitHub"
+          style="float:right; width: 110px; height: 28px; border: none;"></iframe>
+
+        <iframe
+          src="https://platform.twitter.com/widgets/tweet_button.html?size=l&url=http://colorschemr.com&via=s0ftvar&text=Generate color palettes one will fall in love with&hashtags=ColorSchemr"
+          width="80"
+          height="28"
+          title="Twitter Tweet Button"
+          style="float:right; border: 0; overflow: hidden;">
+        </iframe>
         <p class="mdl-typography--font-light">Angoor Tu: © 2016, AngularAttack Hackathon</p>
         <p class="float--right">Made with <i class="fa fa-heart" aria-hidden="true" style="color: #F96767;"></i> in India</p>
         <p class="mdl-typography--font-light">Developed by <a href="http://varunmalhotra.xyz">Varun Malhotra</a> and <a href="https://twitter.com/gauravmuk">Gaurav Nanda</a></p>

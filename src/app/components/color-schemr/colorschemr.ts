@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Renderer, ElementRef, OnDestroy } from '@angular/core';
 import { NgStyle, NgIf } from '@angular/common';
 
 import { MDL } from '../shared/mdl';
@@ -18,6 +18,7 @@ import { EscapeHtmlTagsPipe } from '../../pipes/EscapeHtmlTagsPipe';
   selector: 'app',
   templateUrl: 'app/components/color-schemr/color-schemr.html',
   styleUrls: [
+    'app/assets/styles/responsive.css',
     'app/components/shared/css/style.css',
     'app/components/color-schemr/color-schemr.css'
   ],
@@ -44,10 +45,21 @@ export class ColorSchemr {
   isDiscoMode: boolean = false;
   isPianoMode: boolean = false;
 
+  keyPressEvent: any;
+  touchStartEvent: any;
+  touchEndEvent: any;
+  touchCancelEvent: any;
+  touchMoveEvent: any;
+
+  gradientView: Object = {};
+  gradientColors: Array<String> = [];
+
   constructor(
     public colorService: ColorService,
     public stripService: StripService,
-    public quoteService: QuoteService
+    public quoteService: QuoteService,
+    public elementRef: ElementRef,
+    public renderer: Renderer
     // @Inject(RouteParams) params: RouteParams
   ) {
     // this.hash = params.get('hash');
@@ -55,6 +67,7 @@ export class ColorSchemr {
 
   ngOnInit() {
     this.init();
+    this.addListeners();
   }
   init() {
     let stripsLength = Defaults.STRIP_INIT_COUNT;
@@ -114,14 +127,6 @@ export class ColorSchemr {
       this.setCurrentQuote();
     });
   };
-
-  setQuote() {
-    if (this.currentQuoteIndex === 0 && this.quotes.length === 0) {
-      this.getQuote();
-    } else {
-      this.setCurrentQuote();
-    }
-  }
 
   setCurrentQuote() {
     if (this.isDiscoMode || this.isPianoMode) {
@@ -190,5 +195,58 @@ export class ColorSchemr {
       clearInterval(this.pianoModeInterval);
       this.isPianoMode = false;
     }
+  }
+
+  getGradientCode() {
+    this.gradientColors = [];
+    for (let i = 0; i < this.colorStrips.length; i++) {
+      this.gradientColors.push(this.colorStrips[i].rgbColor);
+    }
+    this.gradientColors.join(', ');
+    return `linear-gradient(to right, ${this.gradientColors} )`;
+  }
+
+  addListeners() {
+    this.removeListeners();
+
+    let isTouchStarted = false;
+
+    this.keyPressEvent = this.renderer.listenGlobal('document', 'keypress', (event) => {
+      this.eventHandler(event);
+    });
+
+    this.touchStartEvent = this.renderer.listenGlobal('document', 'touchstart', (event) => {
+      isTouchStarted = true;
+    });
+
+    this.touchEndEvent = this.renderer.listenGlobal('document', 'touchend', (event) => {
+      isTouchStarted = false;
+    });
+
+    this.touchCancelEvent = this.renderer.listenGlobal('document', 'touchcancel', (event) => {
+      isTouchStarted = false;
+    });
+
+    this.touchMoveEvent = this.renderer.listenGlobal('document', 'touchmove', (event) => {
+      if (isTouchStarted) {
+        this.updateStripSettings();
+        isTouchStarted = false;
+      }
+    });
+  }
+
+  removeListeners() {
+    if (typeof this.touchEndEvent === 'function') {
+      this.keyPressEvent();
+      this.touchStartEvent();
+      this.touchEndEvent();
+      this.touchCancelEvent();
+      this.touchMoveEvent();
+    }
+  }
+
+  ngOnDestroy() {
+    // Remove the listeners!
+    this.removeListeners();
   }
 }

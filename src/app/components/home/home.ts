@@ -13,6 +13,9 @@ import { Loader } from '../shared/loader';
   pipes: []
 })
 export class Home {
-  constructor() {}
+  constructor(public router: Router) {}
   ngOnInit() {}
+  goToApp() {
+    this.router.navigate(['/ColorSchemr']);
+  }
 }

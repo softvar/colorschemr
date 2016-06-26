@@ -1,10 +1,9 @@
 .social-icon {
-	margin-top: 50px;
+	margin-top: 15px;
 	margin-left: 20px;
 	fill: #C0C0C0;
 	transition: all 0.5s ease 0.2s;
 }
-
 
 .social-icon.linkedin:hover {
 	fill: #65B7D2;
@@ -23,4 +22,9 @@
 .social-icon.github:hover {
     fill: #333333;
     text-decoration: none;
+}
+
+.team-member-info-section {
+	background-color: #EFEFEF;
+	padding: 20px;
 }

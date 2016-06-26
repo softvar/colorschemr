@@ -1,65 +1,82 @@
 <app-header></app-header>
-<div style="width: 100%;">
+<div odometer style="width: 100%;">
     <div style="overflow:hidden; float: left;margin-bottom: 10px;" [ngStyle]="{ 'width': showPreviewMode ? '75%' : '100%' }">
-        <div style="height: 585px;" (window:keypress)="eventHandler($event)">
+        <div class="strip-max-height">
             <div class="mdl-grid global-settings-bar">
-                <div class="mdl-cell mdl-cell--1-col" style="padding: 4px;">
+                <div class="mdl-cell mdl-cell--2-col  mdl-cell--1-col-phone mdl-cell--1-col-tablet" style="padding: 12px;">
                     <div style="cursor: pointer;" (click)="toggleStripsLock()">
                         <i id="global-lock-guide" class="material-icons" style="vertical-align: middle;">{{ !allStrips.areLocked ? 'lock_open' : 'lock' }}</i>
                         <span class="mdl-tooltip inline" for="global-lock-guide">Click to {{ allStrips.areLocked ? ' unlock' : ' lock' }} all strips</span>
                     </div>
                 </div>
-                <div class="mdl-cell mdl-cell--4-col">
-                    <div class="mdl-grid" style="padding: 0;">
-                        <div class="mdl-cell mdl-cell--2-col">
-                            <i class="material-icons" id="rgb-selection-guide" style="color: #777;" tabindex="0">info</i>
-                            <span class="mdl-tooltip inline" for="rgb-selection-guide">Select RGB components to get colors in that range</span>
-                        </div>
+                <div class="mdl-cell mdl-cell--5-col mdl-cell--1-col-phone  mdl-cell--3-col-tablet">
+                    <div class="mdl-grid">
                         <div class="mdl-cell mdl-cell--3-col">
-                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-red" style="text-align: left;">
+                            <label id="checkbox-red-info" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-red" style="text-align: left;">
                                 <input type="checkbox" id="checkbox-red" class="mdl-checkbox__input" checked [(ngModel)]="allStrips.isRed" (ngModelChange)="toggleStripsRGBComponents()">
                                 <span>Red</span>
                             </label>
+                            <div class="mdl-tooltip" [attr.for]="'checkbox-red-info'" [hidden]="!allStrips.isRed">Uncheck this to get only Green & Blue colors</div>
+                            <div class="mdl-tooltip" [attr.for]="'checkbox-red-info'" [hidden]="allStrips.isRed">Check this to get Red colors</div>
                         </div>
                         <div class="mdl-cell mdl-cell--3-col">
-                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-green" style="text-align: left;">
+                            <label id="checkbox-green-info" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-green" style="text-align: left;">
                                 <input type="checkbox" id="checkbox-green" class="mdl-checkbox__input" checked [(ngModel)]="allStrips.isGreen" (ngModelChange)="toggleStripsRGBComponents()">
                                 <span>Green</span>
                             </label>
+                            <div class="mdl-tooltip" [attr.for]="'checkbox-green-info'" [hidden]="!allStrips.isGreen">Uncheck this to get only Red & Blue colors</div>
+                            <div class="mdl-tooltip" [attr.for]="'checkbox-green-info'" [hidden]="allStrips.isGreen">Check this to get Green colors</div>
                         </div>
                         <div class="mdl-cell mdl-cell--3-col">
-                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-blue" style="text-align: left;">
+                            <label id="checkbox-blue-info" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-blue" style="text-align: left;">
                                 <input type="checkbox" id="checkbox-blue" class="mdl-checkbox__input" checked [(ngModel)]="allStrips.isBlue" (ngModelChange)="toggleStripsRGBComponents()">
                                 <span>Blue</span>
                             </label>
+                            <div class="mdl-tooltip" [attr.for]="'checkbox-blue-info'" [hidden]="!allStrips.isBlue">Uncheck this to get only Red & Green colors</div>
+                            <div class="mdl-tooltip" [attr.for]="'checkbox-blue-info'" [hidden]="allStrips.isBlue">Check this to get Blue colors</div>
                         </div>
                     </div>
                 </div>
-                <div class="mdl-cell mdl-cell--3-col" style="padding: 4px;">
-                    <strong>Hit Spacebar to generate colors</strong>
-                </div>
-                <div class="mdl-cell mdl-cell--4-col" style="padding: 4px;">
+                <!-- <div class="mdl-cell mdl-cell--3-col" style="padding: 4px;">
+                    <strong>{{ texts.changePalettes }}</strong>
+                </div> -->
+                <div class="mdl-cell mdl-cell--5-col mdl-cell--1-col-phone  mdl-cell--4-col-tablet" style="padding: 4px;">
                     <div class="mdl-grid" style="padding: 0;">
-                        <div class="mdl-cell mdl-cell--4-col">
-                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="disco-switch">
+                        <div class="mdl-cell mdl-cell--3-col">
+                            <label id="disco-switch-info" class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="disco-switch">
                                 <input #discoSwitcher type="checkbox" id="disco-switch" class="mdl-switch__input" (change)="toggleDiscoMode(discoSwitcher.checked)">
                                 <span class="mdl-switch__label">Disco</span>
                             </label>
+                            <div class="mdl-tooltip" [attr.for]="'disco-switch-info'" [hidden]="discoSwitcher.checked">Toggle this to get random palettes</div>
+                            <div class="mdl-tooltip" [attr.for]="'disco-switch-info'" [hidden]="!discoSwitcher.checked">Toggle this to reset</div>
                         </div>
 
-                        <div class="mdl-cell mdl-cell--4-col">
-                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="piano-switch">
+                        <div class="mdl-cell mdl-cell--3-col">
+                            <label id="piano-switch-info" class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="piano-switch">
                                 <input #pianoSwitcher type="checkbox" id="piano-switch" class="mdl-switch__input" (change)="togglePianoMode(pianoSwitcher.checked)">
                                 <span class="mdl-switch__label">Piano</span>
                             </label>
+                            <div class="mdl-tooltip" [attr.for]="'piano-switch-info'" [hidden]="pianoSwitcher.checked">Toggle this to get random color on random strip</div>
+                            <div class="mdl-tooltip" [attr.for]="'piano-switch-info'" [hidden]="!pianoSwitcher.checked">Toggle this to reset</div>
                         </div>
 
-                        <div class="mdl-cell mdl-cell--4-col">
-                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="preview-switch">
+                        <div class="mdl-cell mdl-cell--3-col">
+                            <label id="preview-switch-info" class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="preview-switch">
                                 <input #schemerPreview type="checkbox" id="preview-switch" class="mdl-switch__input"
                                        (change)="showPreviewMode = schemerPreview.checked;">
                                 <span class="mdl-switch__label">Preview</span>
                             </label>
+                            <div class="mdl-tooltip" [attr.for]="'preview-switch-info'" [hidden]="schemerPreview.checked">Toggle this to view template</div>
+                            <div class="mdl-tooltip" [attr.for]="'preview-switch-info'" [hidden]="!schemerPreview.checked">Toggle this to reset</div>
+                        </div>
+
+                        <div class="mdl-cell mdl-cell--3-col">
+                            <label id="gradient-switch-info" class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="gradient-switch">
+                                <input [(ngModel)]="gradientView.isChecked" type="checkbox" id="gradient-switch" class="mdl-switch__input">
+                                <span class="mdl-switch__label">Gradient</span>
+                            </label>
+                            <div class="mdl-tooltip" [attr.for]="'gradient-switch-info'" [hidden]="gradientView.isChecked">Toggle this to view palette as Gradient</div>
+                            <div class="mdl-tooltip" [attr.for]="'gradient-switch-info'" [hidden]="!gradientView.isChecked">Toggle this to reset</div>
                         </div>
                     </div>
                 </div>
@@ -69,35 +86,41 @@
                 <div class="mdl-tooltip" for="add-front">Add to front</div>
             </div>
             <div class="strip"
-                 *ngFor="let colorStrip of colorStrips; let i = index;"
-                 [ngStyle]="{ 'background': colorStrip.rgbColor, width: ((100 / colorStrips.length) - (10 / colorStrips.length )) + '%' }"
-                 (click)="onStripClick($event, i, colorStrip)"
-                 (mouseover)="colorStrip.isHovered = true;"
-                 (mouseout)="colorStrip.isHovered = false;">
+                [hidden]="gradientView.isChecked"
+                *ngFor="let colorStrip of colorStrips; let i = index;"
+                [ngStyle]="{ 'background': colorStrip.rgbColor, width: ((100 / colorStrips.length) - (10 / colorStrips.length )) + '%' }"
+                (click)="onStripClick($event, i, colorStrip)"
+                (mouseover)="colorStrip.isHovered = true;"
+                (mouseout)="colorStrip.isHovered = false;">
 
                 <div class="absolute" style="top: 5px;"
                      [ngClass]="{'close--left': i === 0, 'close--right': i !== 0}"
                      [hidden]="!colorStrip.isHovered || colorStrips.length === 1"
                      (click)="removeStrip($event, i, colorStrip)">
-                    <i id="remove-strip" class="material-icons" style="font-size: 20px" [ngStyle]="{ 'color' : colorStrip.fontColor }">close</i>
+                    <i id="remove-strip-{{ i }}" class="material-icons" style="font-size: 20px" [ngStyle]="{ 'color' : colorStrip.fontColor }">close</i>
+                    <div class="mdl-tooltip" [attr.for]="'remove-strip-' + i">Remove this strip</div>
                 </div>
 
                 <div class="absolute" style="bottom: 320px; width: 100%;"
                      [hidden]="!colorStrip.isHovered">
-                    <input class="mdl-slider mdl-js-slider" type="range"
+                    <input id="change-opacity-{{ i }}" class="mdl-slider mdl-js-slider" type="range"
                            min="1" max="10" value="10" steps="1" tabindex="0"
                            [(ngModel)]="colorStrip.opacity"
                            (click)="onOpacityChange($event, i, colorStrip)">
+                    <div class="mdl-tooltip" [attr.for]="'change-opacity-' + i">Adjust strip's opacity</div>
                 </div>
 
-                <div style="bottom: 275px; width: 100%; font-size: 16px; text-transform: uppercase;"
-                     class="absolute" [ngStyle]="{ 'color' : colorStrip.fontColor }">
+                <div id="hex-code-{{ i }}" style="bottom: 275px; width: 100%; font-size: 16px; text-transform: uppercase;"
+                     class="absolute  color-codes" [ngStyle]="{ 'color' : colorStrip.fontColor }">
                     {{ colorStrip.color }}
                 </div>
-                <div style="bottom: 225px; width: 100%; font-size: 16px;"
-                     class="absolute" [ngStyle]="{ 'color' : colorStrip.fontColor }">
+                <div class="mdl-tooltip" [attr.for]="'hex-code-' + i">Color's Hex code</div>
+
+                <div id="rgb-code-{{ i }}" style="bottom: 225px; width: 100%; font-size: 16px;"
+                     class="absolute  color-codes" [ngStyle]="{ 'color' : colorStrip.fontColor }">
                     {{ colorStrip.rgbColor }}
                 </div>
+                <div class="mdl-tooltip" [attr.for]="'rgb-code-' + i">Color's RGB code</div>
 
                 <div style="bottom: 100px; width: 100%;"
                      class="absolute"
@@ -112,28 +135,46 @@
                 <div class="absolute" style="top: 100px;width: 100%;" [hidden]="!colorStrip.isHovered">
                     <div class="mdl-grid" style="padding: 0; margin-left: 20px;">
                         <div class="mdl-cell mdl-cell--3-col">
-                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" [attr.for]="'checkbox-red-' + i" style="text-align: left;">
+                            <label id="checkbox-red-info-{{ i }}" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" [attr.for]="'checkbox-red-' + i" style="text-align: left;">
                                 <input type="checkbox" id="checkbox-red-{{ i }}" class="mdl-checkbox__input" checked [(ngModel)]="colorStrip.isRed">
                                 <span [ngStyle]="{ 'color' : colorStrip.fontColor }">Red</span>
                             </label>
+                            <div class="mdl-tooltip" [attr.for]="'checkbox-red-info-' + i" [hidden]="!colorStrip.isRed">Uncheck this to get only Green & Blue colors</div>
+                            <div class="mdl-tooltip" [attr.for]="'checkbox-red-info-' + i" [hidden]="colorStrip.isRed">Check this to get Red colors</div>
                         </div>
                     </div>
                     <div class="mdl-grid" style="padding: 0; margin-left: 20px;">
                         <div class="mdl-cell mdl-cell--3-col">
-                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" [attr.for]="'checkbox-green-' + i" style="text-align: left;">
+                            <label id="checkbox-green-info-{{ i }}" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" [attr.for]="'checkbox-green-' + i" style="text-align: left;">
                                 <input type="checkbox" id="checkbox-green-{{ i }}" class="mdl-checkbox__input" checked [(ngModel)]="colorStrip.isGreen">
                                 <span [ngStyle]="{ 'color' : colorStrip.fontColor }">Green</span>
                             </label>
+                            <div class="mdl-tooltip" [attr.for]="'checkbox-green-info-' + i" [hidden]="!colorStrip.isGreen">Uncheck this to get only Red & Blue colors</div>
+                            <div class="mdl-tooltip" [attr.for]="'checkbox-green-info-' + i" [hidden]="colorStrip.isGreen">Check this to get Green colors</div>
                         </div>
                     </div>
                     <div class="mdl-grid" style="padding: 0; margin-left: 20px;">
                         <div class="mdl-cell mdl-cell--3-col">
-                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" [attr.for]="'checkbox-blue-' + i" style="text-align: left;">
+                            <label id="checkbox-blue-info-{{ i }}" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" [attr.for]="'checkbox-blue-' + i" style="text-align: left;">
                                 <input type="checkbox" id="checkbox-blue-{{ i }}" class="mdl-checkbox__input" checked [(ngModel)]="colorStrip.isBlue">
                                 <span [ngStyle]="{ 'color' : colorStrip.fontColor }">Blue</span>
                             </label>
+                            <div class="mdl-tooltip" [attr.for]="'checkbox-blue-info-' + i" [hidden]="!colorStrip.isBlue">Uncheck this to get only Red & Green colors
+                            </div>
+                            <div class="mdl-tooltip" [attr.for]="'checkbox-blue-info-' + i" [hidden]="colorStrip.isBlue">Check this to get Blue colors</div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="strip"
+                [hidden]="!gradientView.isChecked"
+                style="width: 90%"
+                [ngStyle]="{ 'background': getGradientCode() }"
+                (mouseover)="gradientView.isHovered = true;"
+                (mouseout)="gradientView.isHovered = false;">
+                <div [hidden]="!gradientView.isHovered"
+                    style="position: absolute; bottom: 275px; width: 100%; font-size: 16px; color: #fff;">
+                    background: linear-gradient( to right, {{ gradientColors }} )
                 </div>
             </div>
             <div class="side-menus" style="float: right">
