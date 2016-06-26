@@ -13,7 +13,7 @@ import { ColorSchemr } from './components/color-schemr/colorschemr';
   templateUrl: 'app/main.html'
 })
 @RouteConfig([
-  { path: '/',	         component: Home,        name: 'Home', useAsDefault: true },
+  { path: '/',           component: Home,        name: 'Home', useAsDefault: true },
   { path: '/app',        component: ColorSchemr, name: 'ColorSchemr' },
   { path: '/app/:id',    component: ColorSchemr },
   { path: '/about',      component: About,       name: 'About' }
