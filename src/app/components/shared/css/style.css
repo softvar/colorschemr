@@ -130,16 +130,35 @@
     height: 160px;
   }
 
-    .android-drawer .android-logo-image {
-      position: absolute;
-      bottom: 16px;
-    }
+  .header-title {
+    font-size: 24px;
+    color: #f35626;
+    background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: hue 20s infinite linear;
+  }
+
+  @-webkit-keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+
+  to {
+    -webkit-filter: hue-rotate(-360deg);
+  }
+}
+
+.android-drawer .android-logo-image {
+  position: absolute;
+  bottom: 16px;
+}
 
 .android-be-together-section {
   position: relative;
   height: 650px;
   width: auto;
-  background-color: #f3f3f3;
+  /*background-color: #f3f3f3;*/
   background-size: cover;
 }
 
@@ -267,7 +286,7 @@
 .android-wear-section {
   position: relative;
   background-size: cover;
-  height: 670px;
+  height: 500px;
 }
 
 .android-wear-band {
@@ -431,7 +450,7 @@
   .android-wear-section {
     position: relative;
     background-size: cover;
-    height: 1010px;
+    height: 900px;
   }
 
   .android-navigation-container {
