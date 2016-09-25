@@ -14,8 +14,7 @@ var webpackConfig = {
 
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({ name: ['app-config', 'vendor', 'polyfills'], minChunks: Infinity }),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin()
+    new webpack.optimize.DedupePlugin()
   ],
 
   module: {
