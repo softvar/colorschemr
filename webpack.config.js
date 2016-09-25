@@ -1,17 +1,15 @@
 var webpack = require('webpack');
 var path = require('path');
 
-
-// Webpack Config
 var webpackConfig = {
   entry: {
-    'polyfills': './src/polyfills.ts',
-    'vendor':    './src/vendor.ts',
-    'app-config':'./src/app-config.ts',
+    'polyfills' : './src/polyfills.ts',
+    'vendor' : './src/vendor.ts',
+    'app-config' : './src/app-config.ts'
   },
 
   output: {
-    path: './src/prod',
+    path : './src/prod'
   },
 
   plugins: [
@@ -22,17 +20,11 @@ var webpackConfig = {
 
   module: {
     loaders: [
-      // .ts files for TypeScript
-      { test: /\.ts$/, loader: 'awesome-typescript-loader' },
-
+      { test: /\.ts$/, loader: 'awesome-typescript-loader' }
     ]
   }
-
 };
 
-
-
-// Our Webpack Defaults
 var defaultConfig = {
   devtool: 'cheap-module-source-map',
   cache: true,
@@ -55,9 +47,8 @@ var defaultConfig = {
         test: /\.js$/,
         loader: 'source-map-loader',
         exclude: [
-          // these packages have problems with their sourcemaps
           path.join(__dirname, 'node_modules', 'rxjs'),
-          path.join(__dirname, 'node_modules', '@angular2-material'),
+          path.join(__dirname, 'node_modules', '@angular2-material')
         ]
       }
     ],
@@ -72,12 +63,6 @@ var defaultConfig = {
     extensions: ['', '.ts', '.js']
   },
 
-  /**
-   * Static analysis linter for TypeScript advanced options configuration
-   * Description: An extensible linter for the TypeScript language.
-   *
-   * See: https://github.com/wbuchwalter/tslint-loader
-   */
   tslint: {
     emitErrors: false,
     failOnHint: false,
@@ -96,8 +81,8 @@ var defaultConfig = {
     Buffer: 0,
     clearImmediate: 0,
     setImmediate: 0
-  },
-}
+  }
+};
 
 var webpackMerge = require('webpack-merge');
 module.exports = webpackMerge(defaultConfig, webpackConfig);

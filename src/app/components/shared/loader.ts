@@ -1,13 +1,8 @@
 import { Component, Input } from '@angular/core';
 
-import { MDL } from './mdl';
-
 @Component({
   selector: 'loader',
-  templateUrl: 'app/components/shared/loader.html',
-  providers: [],
-  directives: [ MDL ],
-  pipes: []
+  templateUrl: 'app/components/shared/loader.html'
 })
 export class Loader {
   @Input() msg;
