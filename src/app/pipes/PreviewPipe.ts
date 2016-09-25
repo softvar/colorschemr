@@ -1,10 +1,10 @@
-import { Pipe } from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
     name: 'transform'
 })
 
-export class PreviewPipe {
+export class PreviewPipe implements PipeTransform {
     transform(value) {
         let transformedArray = [];
         let counter = 0;

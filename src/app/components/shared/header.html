@@ -3,7 +3,7 @@
     <span>{{ texts.changePalettes }}</span>
   </div>
 
-  <a [routerLink]=" ['/ColorSchemr'] " class="android-title mdl-layout-title header-title">
+  <a routerLink="/app" class="android-title mdl-layout-title header-title">
     Color Schemer
   </a>
 
@@ -13,24 +13,9 @@
   <!-- Navigation -->
   <div class="android-navigation-container">
     <nav class="android-navigation mdl-navigation">
-      <a class="mdl-navigation__link mdl-typography--text-uppercase" [routerLink]=" ['/Home'] ">Home</a>
-      <a class="mdl-navigation__link mdl-typography--text-uppercase" [routerLink]=" ['/ColorSchemr'] " [hidden]="!isAboutPage">Generate Scheme</a>
-      <a class="mdl-navigation__link mdl-typography--text-uppercase" [routerLink]=" ['/About'] ">About</a>
+      <a class="mdl-navigation__link mdl-typography--text-uppercase" routerLink="/">Home</a>
+      <a class="mdl-navigation__link mdl-typography--text-uppercase" routerLink="/app" [hidden]="!isAboutPage">Generate Scheme</a>
+      <a class="mdl-navigation__link mdl-typography--text-uppercase" routerLink="/about">About</a>
     </nav>
   </div>
-
-  <!-- <span class="android-mobile-title mdl-layout-title">
-
-  </span>
-
-  <button class="android-more-button mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button">
-    <i class="material-icons">more_vert</i>
-  </button>
-
-  <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
-    <li class="mdl-menu__item">Horizontal - One</li>
-    <li class="mdl-menu__item">Horizontal - Two</li>
-    <li class="mdl-menu__item">Horizontal - Three</li>
-    <li disabled class="mdl-menu__item">Vertical - One</li>
-  </ul> -->
 </div>

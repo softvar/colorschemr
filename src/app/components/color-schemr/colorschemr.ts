@@ -1,19 +1,9 @@
-import { Component, Inject, Renderer, ElementRef, OnDestroy } from '@angular/core';
-import { NgStyle, NgIf } from '@angular/common';
+import { Component, Renderer } from '@angular/core';
 
-import { MDL } from '../shared/mdl';
-import { Header } from '../shared/header';
-import { Footer } from '../shared/footer';
-
-import { ColorService } from '../../services/ColorService';
 import { StripService } from '../../services/StripService';
 
 import { Defaults } from '../../constants/Defaults';
 import { QuoteService } from '../../services/QuoteService';
-import { SchemrPreviewer } from '../previewer/Previewer';
-import { PreviewPipe } from '../../pipes/PreviewPipe';
-
-import { EscapeHtmlTagsPipe } from '../../pipes/EscapeHtmlTagsPipe';
 @Component({
   selector: 'app',
   templateUrl: 'app/components/color-schemr/color-schemr.html',
@@ -21,10 +11,7 @@ import { EscapeHtmlTagsPipe } from '../../pipes/EscapeHtmlTagsPipe';
     'app/assets/styles/responsive.css',
     'app/components/shared/css/style.css',
     'app/components/color-schemr/color-schemr.css'
-  ],
-  providers: [ ColorService, StripService, QuoteService ],
-  directives: [ MDL, Header, Footer, SchemrPreviewer ],
-  pipes: [ EscapeHtmlTagsPipe, PreviewPipe ]
+  ]
 })
 export class ColorSchemr {
   rangeRGBColor: Array<Object> = [];
@@ -55,10 +42,8 @@ export class ColorSchemr {
   gradientColors: Array<String> = [];
 
   constructor(
-    public colorService: ColorService,
     public stripService: StripService,
     public quoteService: QuoteService,
-    public elementRef: ElementRef,
     public renderer: Renderer
     // @Inject(RouteParams) params: RouteParams
   ) {

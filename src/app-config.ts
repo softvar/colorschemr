@@ -1,20 +1,6 @@
-import {
-LocationStrategy,
-HashLocationStrategy
-} from '@angular/common'; // PathLocationStrategy - no longer legacy `#` in paths
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app.module';
 
-import { bootstrap } from '@angular/platform-browser-dynamic';
-import { provide } from '@angular/core';
-import { HTTP_PROVIDERS } from '@angular/http';
+const platform = platformBrowserDynamic();
 
-// Angular2 rc-1 router doesn't support things as in beta version, which is kinda useful
-import { ROUTER_PROVIDERS } from '@angular/router-deprecated';
-
-import { MainApp } from './app/main';
-
-bootstrap(MainApp, [
-  HTTP_PROVIDERS,
-  ROUTER_PROVIDERS,
-  provide(LocationStrategy, {useClass: HashLocationStrategy})
-])
-.catch(err => console.error(err));
+platform.bootstrapModule(AppModule);

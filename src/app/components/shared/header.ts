@@ -1,7 +1,4 @@
 import { Component, ViewEncapsulation, Input } from '@angular/core';
-import { Router, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
-
-import { MDL } from '../shared/mdl';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -10,10 +7,7 @@ import { MDL } from '../shared/mdl';
   styleUrls: [
     'app/assets/styles/responsive.css',
     'app/components/shared/css/style.css'
-    ],
-  providers: [],
-  directives: [ MDL, ROUTER_DIRECTIVES ],
-  pipes: []
+    ]
 })
 export class Header {
   @Input() isAboutPage;
