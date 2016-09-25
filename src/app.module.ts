@@ -12,11 +12,16 @@ import { PreviewPipe } from './app/pipes/PreviewPipe';
 import { SchemrPreviewer } from './app/components/previewer/Previewer';
 import { EscapeHtmlTagsPipe } from './app/pipes/EscapeHtmlTagsPipe';
 import { routing, appRoutingProviders } from './app.routing';
+import { ColorService } from './app/services/ColorService';
+import { StripService } from './app/services/StripService';
+import { QuoteService } from './app/services/QuoteService';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
+        HttpModule,
         routing
     ],
     declarations: [
@@ -31,7 +36,10 @@ import { routing, appRoutingProviders } from './app.routing';
         EscapeHtmlTagsPipe
     ],
     providers: [
-        appRoutingProviders
+        appRoutingProviders,
+        ColorService,
+        StripService,
+        QuoteService
     ],
     bootstrap: [ AppComponent ]
 })

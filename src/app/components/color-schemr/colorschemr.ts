@@ -1,6 +1,5 @@
-import { Component, Renderer, ElementRef } from '@angular/core';
+import { Component, Renderer } from '@angular/core';
 
-import { ColorService } from '../../services/ColorService';
 import { StripService } from '../../services/StripService';
 
 import { Defaults } from '../../constants/Defaults';
@@ -43,10 +42,8 @@ export class ColorSchemr {
   gradientColors: Array<String> = [];
 
   constructor(
-    public colorService: ColorService,
     public stripService: StripService,
     public quoteService: QuoteService,
-    public elementRef: ElementRef,
     public renderer: Renderer
     // @Inject(RouteParams) params: RouteParams
   ) {
